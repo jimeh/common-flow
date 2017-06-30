@@ -11,6 +11,16 @@ the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
 of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
 into account how a lot of open source projects use git.
 
+Branch types:
+
+- Master Branch - Should always be deployable / usable, is considered "bleeding
+  edge", and must be named `master`.
+- Change Branches - Any branch that introduces changes (new feature, bug fix,
+  etc), should be created off of `master`, and must have a descriptive name.
+- Maintenance Branches - Used to maintain old versions, and should follow a
+  `stable-X.Y` naming pattern, where `X` is MAJOR version and `Y` is MINOR
+  version.
+
 Rules:
 
 - The `master` branch should always be deployable / usable.
@@ -24,14 +34,4 @@ Rules:
   in to `master`.
 - New releases are created by committing a version bump commit directly to
   `master`, and then tagging that commit with the version.
-
-Branch types:
-
-- Master Branch - Should always be deployable / usable, is considered "bleeding
-  edge", and must be named `master`.
-- Change Branches - Any branch that introduces changes (new feature, bug fix,
-  etc), should be created off of `master`, and must have a descriptive name.
-- Maintenance Branches - Used to maintain old versions, and should follow a
-  `stable-X.Y` naming pattern, where `X` is MAJOR version and `Y` is MINOR
-  version.
 
