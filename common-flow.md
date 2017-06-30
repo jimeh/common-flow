@@ -29,8 +29,7 @@ Branch types:
 - **Master Branch:** Should always be deployable / usable, is considered
   "bleeding edge", and must be named `master`.
 - **Change Branches:** Any branch that introduces changes (new feature, bug fix,
-  etc), should be cut from `master` (in most cases), and must have a descriptive
-  name.
+  etc), should be created from `master`, and must have a descriptive name.
 - **Maintenance Branches:** Used to maintain old versions, and should follow a
   `stable-X.Y` naming pattern, where `X` is MAJOR version and `Y` is MINOR
   version.
