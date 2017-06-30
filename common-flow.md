@@ -35,3 +35,9 @@ Rules:
 - New releases are created by committing a version bump commit directly to
   `master`, and then tagging that commit with the version.
 
+Git Common-Flow Specification (Common-Flow)
+-------------------------------------------
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
