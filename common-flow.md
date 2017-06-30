@@ -11,7 +11,7 @@ the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
 of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
 into account how a lot of open source projects use git.
 
-Core rules:
+Rules:
 
 - The `master` branch should always be deployable / usable.
 - New work must be done on a descriptively named change branch created off of
