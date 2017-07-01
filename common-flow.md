@@ -11,31 +11,36 @@ the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
 of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
 into account how a lot of open source projects use git.
 
-Branch types:
+Terminology:
 
-- Master Branch - Should always be deployable / usable, is considered "bleeding
-  edge", and must be named `master`.
+- Master Branch - Should always be deployable/usable, is considered bleeding
+  edge, and must be named `master`.
 - Change Branches - Any branch that introduces changes (new feature, bug fix,
-  etc), should be created off of `master`, and must have a descriptive name.
+  etc), should be created off of the master branch, and must have a descriptive
+  name.
 - Maintenance Branches - Used to maintain old versions, and should follow a
   `stable-X.Y` naming pattern, where `X` is MAJOR version and `Y` is MINOR
   version.
+- Pull Request - A means of requesting that a change branch is merged in to the
+  master branch, allowing others to review, discuss and approve the changes.
+- Release - Consists of a version bump commit directly on the master branch, and
+  a git tag named according to the new version number placed on said commit.
 
-Rules:
+Requirements overview:
 
-- The `master` branch should always be deployable / usable, while considered to
-  be "bleeding edge".
+- The "master" branch should always be deployable/usable, while also
+  considered to be bleeding edge.
 - New work must be done on a descriptively named change branch created off of
-  `master`.
+  the master branch.
 - Commit to the change branch locally, and regularly push your work to the same
   named branch on the remote server.
 - When you need feedback, help, or think the branch is ready for merging, open a
   pull request.
 - After someone else has reviewed and signed off on the change, you can merge it
-  in to `master`.
-- New releases are created by committing a version bump commit directly to
-  `master`, and then tagging that commit with the version.
-- Maintenance branches are updated by manually merging and/or backporting
+  in to the master branch.
+- New releases are created by committing a version bump commit directly to the
+  master branch, and then tagging that commit with the version.
+- Maintenance branches are updated by manually merging and/or back-porting
   relevant change branches in to them.
 
 Git Common-Flow Specification (Common-Flow)
