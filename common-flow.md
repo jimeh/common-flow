@@ -74,10 +74,15 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
    NOT have a "v" prefix. For example "v2.11.4" is bad, and "2.11.4" is good.
 7. To create a new release, you MUST create a "version bump" commit directly on
    the master branch which changes the hard-coded version value of the
-   project. The version bump commit MUST then have a git tag created on it named
-   as the exact version string.
+   project. The version bump commit MUST then have a lightweight git tag created
+   on it named as the exact version string.
 8. A version bump commit MUST have a commit message title of "Bump version to
    VERSION". For example, if the new version string is "2.11.4", the first
    line of the commit message MUST read "Bump version to 2.11.4".
 9. The release tag on the version bump commit MUST be named exactly the same as
-   the version string. The release tag name MUST NOT have a "v" prefix.
+   the version string. And its name MUST NOT have a "v" prefix.
+10. OPTIONALLY you can create the release tag as a annotated tag where the
+   annotation message is the changelog since the last release.
+11. If a change branch which has been merged in to master is found to have a bug
+    in it, the bug fix work MUST be done as a new separate change branch and
+    MUST follow the same workflow as any other change branch.
