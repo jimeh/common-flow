@@ -52,7 +52,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
 1. A branch named "master" MUST exist, and it SHOULD be referred to as the
    "master branch". The master branch MUST always be in a non-broken state, but
-   MUST be considered to be "bleeding edge". That means the master branch MUST
+   MUST be considered to be bleeding edge. That means the master branch MUST
    always be in a good enough state that a new release can always be built from
    master, or that master can always be safely deployed to production.
 2. Changes MUST be performed on a separate branch that SHOULD be referred to as
@@ -77,7 +77,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
    project. The version bump commit MUST then have a git tag created on it named
    as the exact version string.
 8. A version bump commit MUST have a commit message title of "Bump version to
-   <VERSION>". For example, if the new version string is "2.11.4", the first
+   VERSION". For example, if the new version string is "2.11.4", the first
    line of the commit message MUST read "Bump version to 2.11.4".
 9. The release tag on the version bump commit MUST be named exactly the same as
    the version string. The release tag name MUST NOT have a "v" prefix.
