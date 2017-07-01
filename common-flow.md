@@ -42,8 +42,10 @@ Basics:
   in to the master branch.
 - New releases are created by committing a version bump commit directly to the
   master branch, and then tagging that commit with the version.
-- Maintenance branches are updated by manually merging and/or back-porting
-  relevant change branches in to them.
+- Maintenance branches are updated by cherry picking relevant changes if
+  possible, otherwise use a change branch created from the maintenance branch,
+  and have the pull request target the maintenance branch instead of the master
+  branch.
 
 Git Common-Flow Specification (Common-Flow)
 -------------------------------------------
