@@ -41,3 +41,13 @@ Git Common-Flow Specification (Common-Flow)
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
+
+1. A branch called "master" MUST exist, and it SHOULD be referred to as the
+   "master branch". The master branch MUST always be in a non-broken state,
+   meaning it MUST always be in a good enough state that, depending on your
+   deployment/release flow, a new release can be built from master, or that
+   master can safely be deployed to production.
+2. Changes MUST be performed on a separate branch that SHOULD be referred to as
+   a "change branch". All change branches MUST have descriptive names. You
+   SHOULD commit locally often, and you MUST regularly push your work to the
+   same named branch on the remote server.
