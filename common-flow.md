@@ -23,7 +23,8 @@ Branch types:
 
 Rules:
 
-- The `master` branch should always be deployable / usable.
+- The `master` branch should always be deployable / usable, while considered to
+  be "bleeding edge".
 - New work must be done on a descriptively named change branch created off of
   `master`.
 - Commit to the change branch locally, and regularly push your work to the same
@@ -34,6 +35,8 @@ Rules:
   in to `master`.
 - New releases are created by committing a version bump commit directly to
   `master`, and then tagging that commit with the version.
+- Maintenance branches are updated by manually merging and/or backporting
+  relevant change branches in to them.
 
 Git Common-Flow Specification (Common-Flow)
 -------------------------------------------
