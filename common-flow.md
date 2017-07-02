@@ -90,28 +90,20 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        the version string MUST NOT have a "v" prefix. For example "v2.11.4" is
        bad, and "2.11.4" is good.
 4. Releases
-    1. New releases SHOULD be created whenever the master branch has changed
-       enough since the last release that it is worthwhile to push those changes
-       out for wider use. It is RECOMMENDED to create new releases very often to
-       reduce the amount of change in each release.
-    2. Because the master branch is considered bleeding edge, before a new
-       release is created, the state of the master branch MUST be confirmed to
-       be release ready by ensuring all test suites pass and relevant people
-       are confident in delivering a new release.
-    3. To create a new release, you MUST create a "version bump" commit directly
+    1. To create a new release, you MUST create a "version bump" commit directly
        on the master branch which changes the hard-coded version value of the
        project. The version bump commit MUST have a git tag created on it and
        named as the exact version string.
-    4. A version bump commit MUST have a commit message title of "Bump version
+    2. A version bump commit MUST have a commit message title of "Bump version
        to VERSION". For example, if the new version string is "2.11.4", the
        first line of the commit message MUST read: "Bump version to 2.11.4"
-    5. The release tag on the version bump commit MUST be named exactly the same
+    3. The release tag on the version bump commit MUST be named exactly the same
        as the version string. The tag name can OPTIONALLY be prefixed with
        "v". For example the tag name can be either "2.11.4" or "v2.11.4".
-    6. It is RECOMMENDED that release tags are lightweight tags, but you can
+    4. It is RECOMMENDED that release tags are lightweight tags, but you can
        OPTIONALLY use annotated tags if you want to include changelog
        information in the release tag itself.
-    7. If you use annotated release tags, the first line of the annotation MUST
+    5. If you use annotated release tags, the first line of the annotation MUST
        read "Release VERSION". For example for version "2.11.4" the first line
        of the tag annotation would read "Release 2.11.4". The second line must
        be blank, and the changelog MUST start on the third line.
