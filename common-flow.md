@@ -126,7 +126,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        branch.
     3. If a change branch is wrongfully merged in to master, or for any other
        reason the merge must be undone, you MUST undo the merge by reverting the
-       merge commit self. Effectively creating a new commit that reverses all
+       merge commit itself. Effectively creating a new commit that reverses all
        the relevant changes.
 7. Maintenance Releases
     1. Any branch that has a name starting with "stable-" SHOULD be referred to
