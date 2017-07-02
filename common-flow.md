@@ -26,8 +26,8 @@ Terminology
   changes in the source branch should be incorporated into the change branch via
   rebasing.
 - **Merge Target** - A branch that is the intended merge target for a change
-  branch. Typically the merge target will be the branch that a change branch was
-  created from.
+  branch. Typically the merge target branch will be the same as the source
+  branch.
 - **Maintenance Branches** - Used for maintaining old versions and releasing
   PATCH updates when the master branch has moved on. Should follow a
   `stable-X.Y` naming pattern, where `X` is MAJOR version and `Y` is MINOR
@@ -35,7 +35,7 @@ Terminology
 - **Pull Request** - A means of requesting that a change branch is merged in to
   its merge target, allowing others to review, discuss and approve the changes.
 - **Release** - Consists of a version bump commit directly on the master branch,
-  and a git tag named according to the new version number placed on said commit.
+  and a git tag named according to the new version string placed on said commit.
 - **Maintenance Release** - Just like a regular release, except the version bump
   commit and release tag are on a maintenance branch instead of the master
   branch.
