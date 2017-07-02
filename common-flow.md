@@ -58,9 +58,9 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        release.
 2. Changes
     1. Changes MUST be performed on a separate branch that SHOULD be referred to
-       as a "change branch". All change branches MUST have descriptive
-       names. You SHOULD commit often locally, and you SHOULD regularly push
-       your work to the same named branch on the remote server.
+       as a "change branch". All change branches MUST have descriptive names. It
+       is RECOMMENDED that you commit often locally, and you SHOULD regularly
+       push your work to the same named branch on the remote server.
     2. When a change branch is created, the branch that it is created from
        SHOULD be referred to as the "source branch". Each change branch also
        needs a designated "merge target branch", typically this will be the same
