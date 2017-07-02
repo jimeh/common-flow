@@ -67,8 +67,8 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        you and others are happy with the change. This is especially important if
        the merge target is the master branch.
     6. To get feedback, help, or generally just discuss a change branch with
-       others, you SHOULD also create a pull request and discuss the changes
-       with others there.
+       others, it is RECOMMENDED you do this by creating a pull request and
+       discuss the changes with others there.
 3. Versioning
     1. The project MUST have its version hard-coded somewhere in the
        code-base. It is RECOMMENDED that this is done in a file called "VERSION"
@@ -109,7 +109,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     1. All commit messages SHOULD follow the Commit Guidelines and format from
        the official git documentation: http://git-scm.com/book/ch5-2.html
 6. Bug Fixes & Rollback
-    1. You MUST NOT under any circumstance force push to the master branch.
+    1. You MUST NOT under any circumstances force push to the master branch.
     2. If a change branch which has been merged in to the master branch is found
        to have a bug in it, the bug fix work MUST be done as a new separate
        change branch and MUST follow the same workflow as any other change
