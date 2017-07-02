@@ -63,9 +63,10 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     4. To merge a change branch into its merge target branch, you MUST open a
        "pull request" (or equivalent) so others can review and approve your
        changes.
-    5. A pull request MUST only be merged when the test suite is passing, and
-       you and others are happy with the change. This is especially important if
-       the merge target is the master branch.
+    5. A pull request MUST only be merged when the change branch is up-to-date
+       with its source branch, the test suite is passing, and you and others are
+       happy with the change. This is especially important if the merge target
+       is the master branch.
     6. To get feedback, help, or generally just discuss a change branch with
        others, it is RECOMMENDED you do this by creating a pull request and
        discuss the changes with others there.
