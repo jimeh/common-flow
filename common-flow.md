@@ -11,23 +11,32 @@ the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
 of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
 into account how a lot of open source projects use git.
 
-Terminology:
+TL;DR: Common-Flow is basically GitHub Flow with the addition of versioned
+releases, maintenance releases for old versions, and without the requirement to
+deploy to production all the time.
 
-- Master Branch - Must always have passing tests, is considered bleeding
+Terminology
+-----------
+
+- **Master Branch** - Must always have passing tests, is considered bleeding
   edge, and must be named `master`.
-- Change Branches - Any branch that introduces changes like a new feature, a bug
-  fix, etc.
-- Maintenance Branches - Used for maintaining old versions and releasing PATCH
-  updates when the master branch has moved on. Should follow a `stable-X.Y`
-  naming pattern, where `X` is MAJOR version and `Y` is MINOR version.
-- Merge Target - A branch that is the intended merge target for a change
+- **Change Branches** - Any branch that introduces changes like a new feature, a
+  bug fix, etc.
+- **Source Branch** - The branch that a change branch was created from. New
+  changes in the source branch should be incorporated into the change branch via
+  rebasing.
+- **Merge Target** - A branch that is the intended merge target for a change
   branch. Typically the merge target will be the branch that a change branch was
   created from.
-- Pull Request - A means of requesting that a change branch is merged in to its
-  merge target, allowing others to review, discuss and approve the changes.
-- Release - Consists of a version bump commit directly on the master branch, and
-  a git tag named according to the new version number placed on said commit.
-- Maintenance Release - Just like a regular release, except the version bump
+- **Maintenance Branches** - Used for maintaining old versions and releasing
+  PATCH updates when the master branch has moved on. Should follow a
+  `stable-X.Y` naming pattern, where `X` is MAJOR version and `Y` is MINOR
+  version.
+- **Pull Request** - A means of requesting that a change branch is merged in to
+  its merge target, allowing others to review, discuss and approve the changes.
+- **Release** - Consists of a version bump commit directly on the master branch,
+  and a git tag named according to the new version number placed on said commit.
+- **Maintenance Release** - Just like a regular release, except the version bump
   commit and release tag are on a maintenance branch instead of the master
   branch.
 
