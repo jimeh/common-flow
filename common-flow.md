@@ -81,7 +81,19 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     7. To get feedback, help, or generally just discuss a change branch with
        others, it is RECOMMENDED you do this by creating a pull request and
        discuss the changes with others there.
-3. Versioning
+3. Git Best Practices
+    1. All commit messages SHOULD follow the Commit Guidelines and format from
+       the official git documentation:
+       https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project
+    2. You SHOULD always use "--force-with-lease" when doing a force push. The
+       plain "--force" option is dangerous and destructive. More information:
+       https://developer.atlassian.com/blog/2015/04/force-with-lease/
+    3. You SHOULD understand and be comfortable with rebasing:
+       https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+    4. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
+       pull" to avoid unnecessary merge commits. You can make this the default
+       behavior of "git pull" with "git config --global pull.rebase true".
+4. Versioning
     1. The project MUST have its version hard-coded somewhere in the
        code-base. It is RECOMMENDED that this is done in a file called "VERSION"
        located in the root of the project.
@@ -91,7 +103,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        (http://semver.org/) format. Use of Semantic Versioning is OPTIONAL, but
        the version string MUST NOT have a "v" prefix. For example "v2.11.4" is
        bad, and "2.11.4" is good.
-4. Releases
+5. Releases
     1. To create a new release, you MUST create a "version bump" commit directly
        on the master branch which changes the hard-coded version value of the
        project. The version bump commit MUST have a git tag created on it and
@@ -109,9 +121,6 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        read "Release VERSION". For example for version "2.11.4" the first line
        of the tag annotation would read "Release 2.11.4". The second line must
        be blank, and the changelog MUST start on the third line.
-5. Commit Messages
-    1. All commit messages SHOULD follow the Commit Guidelines and format from
-       the official git documentation: http://git-scm.com/book/ch5-2.html
 6. Bug Fixes & Rollback
     1. You MUST NOT under any circumstances force push to the master branch.
     2. If a change branch which has been merged in to the master branch is found
