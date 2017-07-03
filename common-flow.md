@@ -1,4 +1,4 @@
-Git Common-Flow 1.0.0-draft.10
+Git Common-Flow 1.0.0-rc.1
 ==============================
 
 Summary
