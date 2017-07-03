@@ -5,8 +5,7 @@ Summary
 -------
 
 Common-Flow is an attempt to gather a sensible selection of the most common
-usage patterns of git out in the wild into a single and concise
-specification. It is based on
+usage patterns of git into a single and concise specification. It is based on
 the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
 of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
 into account how a lot of open source projects use git.
