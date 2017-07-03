@@ -68,14 +68,17 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        source branch. This MUST be done by rebasing the change branch on top of
        the source branch. To be clear you MUST NOT merge a source branch into a
        change branch.
-    4. To merge a change branch into its merge target branch, you MUST open a
+    4. After rebasing a change branch on top of its source branch you MUST push
+       the change branch to the remote server. This will require you do a force
+       push, and you SHOULD use the "--force-with-lease" git push option.
+    5. To merge a change branch into its merge target branch, you MUST open a
        "pull request" (or equivalent) so others can review and approve your
        changes.
-    5. A pull request MUST only be merged when the change branch is up-to-date
+    6. A pull request MUST only be merged when the change branch is up-to-date
        with its source branch, the test suite is passing, and you and others are
        happy with the change. This is especially important if the merge target
        is the master branch.
-    6. To get feedback, help, or generally just discuss a change branch with
+    7. To get feedback, help, or generally just discuss a change branch with
        others, it is RECOMMENDED you do this by creating a pull request and
        discuss the changes with others there.
 3. Versioning
