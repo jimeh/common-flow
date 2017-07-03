@@ -93,7 +93,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     4. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
        pull" to avoid unnecessary merge commits. You can make this the default
        behavior of "git pull" with "git config --global pull.rebase true".
-    5. It is RECOMMENDED that all branches be merged using "git merge --no-ff".
+    5. It is RECOMMENDED that all branches be merged using "git merge --no-ff".
        This makes sure the reference to the original branch is kept in the commits,
        allows one to revert a merge by reverting a single merge commit, and creates
        a merge commit to mark the integration of the branch with master.
