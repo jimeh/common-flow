@@ -115,39 +115,39 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        into the master branch, that work should have happened against the master
        branch in the first place. One exception to this is version bump commits.
     4. There are two types of release branches; short-term, and long-term.
-6. Short-Term Release Branches
-    1. Used for creating a specific versioned release.
-    2. A short-term release branch is RECOMMENDED if there is a lengthy
-       pre-release verification process to avoid a code freeze on the master
-       branch.
-    3. MUST have a name of "release-VERSION". For example for version
-       "2.11.4" the release branch name MUST be "release-2.11.4".
-    4. When using a short-term release branch, the version bump commit and
-       release tag MUST be made directly on the release branch itself.
-    5. Only very minor changes should be performed on a short-term release
-       branch directly. Any larger changes SHOULD be done in the master branch,
-       and SHOULD be pulled into the release branch by rebasing it on top of the
-       master branch the same was a change branch pulls in updates from its
-       source branch.
-    6. After the version bump commit and release tag have been created, the
-       release branch MUST be merged back into its source branch and then
-       deleted. Typically the source branch will be the master branch.
-7. Long-Term Release Branches
-    1. Used for work on versions which are not currently part of the master
-       branch. Typically this is useful when you need to create a new
-       maintenance release for a older version.
-    2. The branch name MUST have a non-specific version number. For example
-       a long-term release branch for creating new 2.9.x releases would be
-       named "release-2.9".
-    3. To create a new release from a long-term release branch, you MUST
-       create a version bump commit and release tag directly on the release
-       branch.
-    4. A long-term release branch MUST be created from the relevant release
-       tag. For example if there is a security fix for all 2.9.x releases,
-       the latest of which is "2.9.7", we create a new branch called
-       "release-2.9" off of the "2.9.7" release tag. The security fix
-       release will then end up being version "2.9.8".
-8. Bug Fixes & Rollback
+    5. Short-Term Release Branches
+        1. Used for creating a specific versioned release.
+        2. A short-term release branch is RECOMMENDED if there is a lengthy
+           pre-release verification process to avoid a code freeze on the master
+           branch.
+        3. MUST have a name of "release-VERSION". For example for version
+           "2.11.4" the release branch name MUST be "release-2.11.4".
+        4. When using a short-term release branch, the version bump commit and
+           release tag MUST be made directly on the release branch itself.
+        5. Only very minor changes should be performed on a short-term release
+           branch directly. Any larger changes SHOULD be done in the master
+           branch, and SHOULD be pulled into the release branch by rebasing it
+           on top of the master branch the same was a change branch pulls in
+           updates from its source branch.
+        6. After the version bump commit and release tag have been created, the
+           release branch MUST be merged back into its source branch and then
+           deleted. Typically the source branch will be the master branch.
+    6. Long-Term Release Branches
+        1. Used for work on versions which are not currently part of the master
+           branch. Typically this is useful when you need to create a new
+           maintenance release for a older version.
+        2. The branch name MUST have a non-specific version number. For example
+           a long-term release branch for creating new 2.9.x releases would be
+           named "release-2.9".
+        3. To create a new release from a long-term release branch, you MUST
+           create a version bump commit and release tag directly on the release
+           branch.
+        4. A long-term release branch MUST be created from the relevant release
+           tag. For example if there is a security fix for all 2.9.x releases,
+           the latest of which is "2.9.7", we create a new branch called
+           "release-2.9" off of the "2.9.7" release tag. The security fix
+           release will then end up being version "2.9.8".
+6. Bug Fixes & Rollback
     1. You MUST NOT under any circumstances force push to the master branch.
     2. If a change branch which has been merged into the master branch is found
        to have a bug in it, the bug fix work MUST be done as a new separate
@@ -157,7 +157,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        reason the merge must be undone, you MUST undo the merge by reverting the
        merge commit itself. Effectively creating a new commit that reverses all
        the relevant changes.
-9. Git Best Practices
+7. Git Best Practices
     1. All commit messages SHOULD follow the Commit Guidelines and format from
        the official git
        documentation:
