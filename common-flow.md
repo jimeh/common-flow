@@ -51,31 +51,35 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        release/production" state to reduce the friction of creating a new
        release.
 2. Change Branches
-    1. Changes MUST be performed on a separate branch that SHOULD be referred to
-       as a "change branch". All change branches MUST have descriptive names. It
-       is RECOMMENDED that you commit often locally, and you SHOULD regularly
-       push your work to the same named branch on the remote server.
-    2. When a change branch is created, the branch that it is created from
+    1. Each change (feature, bugfix, etc.) MUST be performed on separate
+       branches that SHOULD be referred to as "change branches". All change
+       branches MUST have descriptive names. It is RECOMMENDED that you commit
+       often locally, and you SHOULD regularly push your work to the same named
+       branch on the remote server.
+    2. You MUST create separate change branches for each distinctly different
+       change. You MUST NOT include multiple unrelated changes into a single
+       change branch.
+    3. When a change branch is created, the branch that it is created from
        SHOULD be referred to as the "source branch". Each change branch also
        needs a designated "merge target" branch, typically this will be the same
        as the source branch.
-    3. Change branches MUST be regularly updated with any changes from their
+    4. Change branches MUST be regularly updated with any changes from their
        source branch. This MUST be done by rebasing the change branch on top of
        the source branch.
-    4. After rebasing a change branch on top of its source branch you MUST push
+    5. After rebasing a change branch on top of its source branch you MUST push
        the change branch to the remote server. This will require you to do a
        force push, and you SHOULD use the "--force-with-lease" git push option.
-    5. To merge a change branch into its merge target branch, you MUST open a
-       "pull request" (or equivalent) so others can review and approve your
-       changes.
-    6. A pull request MUST only be merged when the change branch is up-to-date
+3. Pull Requests
+    1. To merge a change branch into its merge target, you MUST open a "pull
+       request" (or equivalent) so others can review and approve your changes.
+    2. A pull request MUST only be merged when the change branch is up-to-date
        with its source branch, the test suite is passing, and you and others are
        happy with the change. This is especially important if the merge target
        is the master branch.
-    7. To get feedback, help, or generally just discuss a change branch with
-       others, it is RECOMMENDED you do this by creating a pull request and
+    3. To get feedback, help, or generally just discuss a change branch with
+       others, the RECOMMENDED way to do so is by creating a pull request and
        discuss the changes with others there.
-3. Versioning
+4. Versioning
     1. The project MUST have its version hard-coded somewhere in the
        code-base. It is RECOMMENDED that this is done in a file called "VERSION"
        located in the root of the project.
@@ -85,7 +89,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        (<http://semver.org/>) format. Use of Semantic Versioning is OPTIONAL,
        but the version string MUST NOT have a "v" prefix. For example "v2.11.4"
        is bad, and "2.11.4" is good.
-4. Releases
+5. Releases
     1. To create a new release, you MUST create a "version bump" commit which
        changes the hard-coded version string of the project. The version bump
        commit MUST have a git tag created on it and named as the exact version
@@ -105,7 +109,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        read "Release VERSION". For example for version "2.11.4" the first line
        of the tag annotation would read "Release 2.11.4". The second line must
        be blank, and the changelog MUST start on the third line.
-5. Release Branches
+6. Release Branches
     1. Any branch that has a name starting with "release-" SHOULD be referred to
        as a "release branch".
     2. Use of release branches is OPTIONAL.
@@ -147,7 +151,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
            the latest of which is "2.9.7", we create a new branch called
            "release-2.9" off of the "2.9.7" release tag. The security fix
            release will then end up being version "2.9.8".
-6. Bug Fixes & Rollback
+7. Bug Fixes & Rollback
     1. You MUST NOT under any circumstances force push to the master branch.
     2. If a change branch which has been merged into the master branch is found
        to have a bug in it, the bug fix work MUST be done as a new separate
@@ -157,7 +161,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        reason the merge must be undone, you MUST undo the merge by reverting the
        merge commit itself. Effectively creating a new commit that reverses all
        the relevant changes.
-7. Git Best Practices
+8. Git Best Practices
     1. All commit messages SHOULD follow the Commit Guidelines and format from
        the official git
        documentation:
