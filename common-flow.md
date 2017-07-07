@@ -101,7 +101,9 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        first line of the commit message MUST read: "Bump version to 2.11.4"
     4. The release tag on the version bump commit MUST be named exactly the same
        as the version string. The tag name can OPTIONALLY be prefixed with
-       "v". For example the tag name can be either "2.11.4" or "v2.11.4".
+       "v". For example the tag name can be either "2.11.4" or "v2.11.4". But
+       you MUST not use a mix of "v" prefixed and non-prefixed tags. Pick one
+       form and stick to it.
     5. It is RECOMMENDED that release tags are lightweight tags, but you can
        OPTIONALLY use annotated tags if you want to include changelog
        information in the release tag itself.
