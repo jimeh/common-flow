@@ -168,16 +168,19 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        the official git
        documentation:
        <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project>
-    2. You SHOULD always use "--force-with-lease" when doing a force push. The
+    2. You SHOULD never blindly commit all changes with "git commit -a". Use
+       "git add" to add individual changes to the staging area so you are fully
+       aware of what you are committing.
+    3. You SHOULD always use "--force-with-lease" when doing a force push. The
        plain "--force" option is dangerous and destructive. More
        information:
        <https://developer.atlassian.com/blog/2015/04/force-with-lease/>
-    3. You SHOULD understand and be comfortable with
+    4. You SHOULD understand and be comfortable with
        rebasing: <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
-    4. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
+    5. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
        pull" to avoid unnecessary merge commits. You can make this the default
        behavior of "git pull" with "git config --global pull.rebase true".
-    5. It is RECOMMENDED that all branches be merged using "git merge --no-ff".
+    6. It is RECOMMENDED that all branches be merged using "git merge --no-ff".
        This makes sure the reference to the original branch is kept in the
        commits, allows one to revert a merge by reverting a single merge commit,
        and creates a merge commit to mark the integration of the branch with
