@@ -47,8 +47,8 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     2. The master branch MUST be considered bleeding edge.
     3. The master branch MUST always be in a non-broken state with its test
        suite passing.
-    4. The master branch SHOULD always be in a "as near as possible ready for
-       release/production" state to reduce the friction of creating a new
+    4. The master branch SHOULD always be in a "as near as possibly ready for
+       release/production" state to reduce any friction with creating a new
        release.
 2. Change Branches
     1. Each change (feature, bugfix, etc.) MUST be performed on separate
@@ -101,9 +101,9 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        first line of the commit message MUST read: "Bump version to 2.11.4"
     4. The release tag on the version bump commit MUST be named exactly the same
        as the version string. The tag name can OPTIONALLY be prefixed with
-       "v". For example the tag name can be either "2.11.4" or "v2.11.4". But
-       you MUST not use a mix of "v" prefixed and non-prefixed tags. Pick one
-       form and stick to it.
+       "v". For example the tag name can be either "2.11.4" or "v2.11.4". You
+       MUST not use a mix of "v" prefixed and non-prefixed tags. Pick one form
+       and stick to it.
     5. It is RECOMMENDED that release tags are lightweight tags, but you can
        OPTIONALLY use annotated tags if you want to include changelog
        information in the release tag itself.
@@ -133,7 +133,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
         5. Only very minor changes should be performed on a short-term release
            branch directly. Any larger changes SHOULD be done in the master
            branch, and SHOULD be pulled into the release branch by rebasing it
-           on top of the master branch the same was a change branch pulls in
+           on top of the master branch the same way a change branch pulls in
            updates from its source branch.
         6. After the version bump commit and release tag have been created, the
            release branch MUST be merged back into its source branch and then
@@ -149,10 +149,11 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
            create a version bump commit and release tag directly on the release
            branch.
         4. A long-term release branch MUST be created from the relevant release
-           tag. For example if there is a security fix for all 2.9.x releases,
-           the latest of which is "2.9.7", we create a new branch called
-           "release-2.9" off of the "2.9.7" release tag. The security fix
-           release will then end up being version "2.9.8".
+           tag. For example if the master branch is on version 2.11.4 and there
+           is a security fix for all 2.9.x releases, the latest of which is
+           "2.9.7". Create a new branch called "release-2.9" off of the "2.9.7"
+           release tag. The security fix release will then end up being version
+           "2.9.8".
 7. Bug Fixes & Rollback
     1. You MUST NOT under any circumstances force push to the master branch.
     2. If a change branch which has been merged into the master branch is found
@@ -168,11 +169,11 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        the official git
        documentation:
        <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project>
-    2. You SHOULD never blindly commit all changes with "git commit -a". Use
-       "git add" to add individual changes to the staging area so you are fully
-       aware of what you are committing.
+    2. You SHOULD never blindly commit all changes with "git commit -a". It is
+       RECOMMENDED you use "git add -i" to add individual changes to the staging
+       area so you are fully aware of what you are committing.
     3. You SHOULD always use "--force-with-lease" when doing a force push. The
-       plain "--force" option is dangerous and destructive. More
+       regular "--force" option is dangerous and destructive. More
        information:
        <https://developer.atlassian.com/blog/2015/04/force-with-lease/>
     4. You SHOULD understand and be comfortable with
