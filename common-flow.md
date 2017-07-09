@@ -11,8 +11,8 @@ of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
 into account how a lot of open source projects use git.
 
 TL;DR: Common-Flow is basically GitHub Flow with the addition of versioned
-releases, maintenance releases for old versions, and without the requirement to
-deploy to production all the time.
+releases, optional release branches should you need them, and without the
+requirement to deploy to production all the time.
 
 Terminology
 -----------
