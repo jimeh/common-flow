@@ -1,5 +1,5 @@
 Git Common-Flow {{version}}
-==============================
+===========================
 
 Summary
 -------
@@ -10,15 +10,15 @@ the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
 of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
 into account how a lot of open source projects use git.
 
-TL;DR: Common-Flow is basically GitHub Flow with the addition of versioned
-releases, optional release branches should you need them, and without the
-requirement to deploy to production all the time.
+In short, Common-Flow is basically GitHub Flow with the addition of versioned
+releases, optional release branches, and without the requirement to deploy to
+production all the time.
 
 Terminology
 -----------
 
-- **Master Branch** - Must always have passing tests, is considered bleeding
-  edge, and must be named `master`.
+- **Master Branch** - Must be named "master", must always have passing tests,
+  and is not guaranteed to always work in production environments.
 - **Change Branches** - Any branch that introduces changes like a new feature, a
   bug fix, etc.
 - **Source Branch** - The branch that a change branch was created from. New
@@ -29,8 +29,9 @@ Terminology
   branch.
 - **Pull Request** - A means of requesting that a change branch is merged in to
   its merge target, allowing others to review, discuss and approve the changes.
-- **Release** - Consists of a version bump commit, and a git tag named according
-  to the new version string placed on said commit.
+- **Release** - Is considered safe to use in production environments. Consists
+  of a version bump commit, and a git tag named according to the new version
+  string placed on said commit.
 - **Release Branches** - Used both for short-term preparations of a release, and
   also for long-term maintenance of older version.
 
@@ -41,16 +42,22 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
-1. The Master Branch
+1. TL;DR
+    1. Don't break the master branch.
+    2. A release is a git tag.
+2. The Master Branch
     1. A branch named "master" MUST exist and it MUST be referred to as the
        "master branch".
-    2. The master branch MUST be considered bleeding edge.
-    3. The master branch MUST always be in a non-broken state with its test
+    2. The master branch MUST always be in a non-broken state with its test
        suite passing.
-    4. The master branch SHOULD always be in a "as near as possibly ready for
+    4. The master branch IS NOT guaranteed to always work in production
+       environments. Despite test suites passing it may at times contain
+       unfinished work. Only releases must be considered safe for production
+       use.
+    5. The master branch SHOULD always be in a "as near as possibly ready for
        release/production" state to reduce any friction with creating a new
        release.
-2. Change Branches
+3. Change Branches
     1. Each change (feature, bugfix, etc.) MUST be performed on separate
        branches that SHOULD be referred to as "change branches". All change
        branches MUST have descriptive names. It is RECOMMENDED that you commit
@@ -69,7 +76,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     5. After rebasing a change branch on top of its source branch you MUST push
        the change branch to the remote server. This will require you to do a
        force push, and you SHOULD use the "--force-with-lease" git push option.
-3. Pull Requests
+4. Pull Requests
     1. To merge a change branch into its merge target, you MUST open a "pull
        request" (or equivalent) so others can review and approve your changes.
     2. A pull request MUST only be merged when the change branch is up-to-date
@@ -79,7 +86,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     3. To get feedback, help, or generally just discuss a change branch with
        others, the RECOMMENDED way to do so is by creating a pull request and
        discuss the changes with others there.
-4. Versioning
+5. Versioning
     1. The project MUST have its version hard-coded somewhere in the
        code-base. It is RECOMMENDED that this is done in a file called "VERSION"
        located in the root of the project.
@@ -89,7 +96,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        (<http://semver.org/>) format. Use of Semantic Versioning is OPTIONAL,
        but the version string MUST NOT have a "v" prefix. For example "v2.11.4"
        is bad, and "2.11.4" is good.
-5. Releases
+6. Releases
     1. To create a new release, you MUST create a "version bump" commit which
        changes the hard-coded version string of the project. The version bump
        commit MUST have a git tag created on it and named as the exact version
@@ -111,7 +118,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        read "Release VERSION". For example for version "2.11.4" the first line
        of the tag annotation would read "Release 2.11.4". The second line must
        be blank, and the changelog MUST start on the third line.
-6. Release Branches
+7. Release Branches
     1. Any branch that has a name starting with "release-" SHOULD be referred to
        as a "release branch".
     2. Use of release branches is OPTIONAL.
@@ -154,7 +161,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
            "2.9.7". Create a new branch called "release-2.9" off of the "2.9.7"
            release tag. The security fix release will then end up being version
            "2.9.8".
-7. Bug Fixes & Rollback
+8. Bug Fixes & Rollback
     1. You MUST NOT under any circumstances force push to the master branch.
     2. If a change branch which has been merged into the master branch is found
        to have a bug in it, the bug fix work MUST be done as a new separate
@@ -164,7 +171,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        reason the merge must be undone, you MUST undo the merge by reverting the
        merge commit itself. Effectively creating a new commit that reverses all
        the relevant changes.
-8. Git Best Practices
+9. Git Best Practices
     1. All commit messages SHOULD follow the Commit Guidelines and format from
        the official git
        documentation:
