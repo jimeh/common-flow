@@ -29,9 +29,9 @@ Terminology
   branch.
 - **Pull Request** - A means of requesting that a change branch is merged in to
   its merge target, allowing others to review, discuss and approve the changes.
-- **Release** - Is considered safe to use in production environments. Consists
-  of a version bump commit, and a git tag named according to the new version
-  string placed on said commit.
+- **Release** - May be considered safe to use in production
+  environments. Consists of a version bump commit, and a git tag named according
+  to the new version string placed on said commit.
 - **Release Branches** - Used both for short-term preparations of a release, and
   also for long-term maintenance of older version.
 
@@ -52,8 +52,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        suite passing.
     4. The master branch IS NOT guaranteed to always work in production
        environments. Despite test suites passing it may at times contain
-       unfinished work. Only releases must be considered safe for production
-       use.
+       unfinished work. Only releases may be considered safe for production use.
     5. The master branch SHOULD always be in a "as near as possibly ready for
        release/production" state to reduce any friction with creating a new
        release.
