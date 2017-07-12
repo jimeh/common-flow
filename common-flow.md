@@ -10,7 +10,7 @@ the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
 of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
 into account how a lot of open source projects use git.
 
-In short, Common-Flow is basically GitHub Flow with the addition of versioned
+In short, Common-Flow is essentially GitHub Flow with the addition of versioned
 releases, optional release branches, and without the requirement to deploy to
 production all the time.
 
