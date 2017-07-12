@@ -174,7 +174,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     1. All commit messages SHOULD follow the Commit Guidelines and format from
        the official git
        documentation:
-       <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project>
+       <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
     2. You SHOULD never blindly commit all changes with "git commit -a". It is
        RECOMMENDED you use "git add -i" to add individual changes to the staging
        area so you are fully aware of what you are committing.
