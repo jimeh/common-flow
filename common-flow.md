@@ -235,6 +235,18 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        and creates a merge commit to mark the integration of the branch with
        master.
 
+FAQ
+---
+
+**What does "descriptive name" mean in terms of change branches?**
+
+[answer goes here]
+
+**What if there's a emergency hotfix that needs to be released, but for whatever
+reason, master has changes that cannot be released right now?**
+
+[answer goes here]
+
 About
 -----
 
