@@ -86,37 +86,51 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        others, the RECOMMENDED way to do so is by creating a pull request and
        discuss the changes with others there.
 5. Versioning
-    1. The project MUST have its version hard-coded somewhere in the
-       code-base. It is RECOMMENDED that this is done in a file called "VERSION"
-       located in the root of the project.
-    2. If you are using a "VERSION" file in the root of the project, this MUST
-       only contain the exact version string.
-    3. The version string SHOULD follow the Semantic Versioning
-       (<http://semver.org/>) format. Use of Semantic Versioning is OPTIONAL,
-       but the version string MUST NOT have a "v" prefix. For example "v2.11.4"
-       is bad, and "2.11.4" is good.
-6. Releases
-    1. To create a new release, you MUST create a "version bump" commit which
-       changes the hard-coded version string of the project. The version bump
-       commit MUST have a git tag created on it and named as the exact version
+    1. A "version string" is a typically mostly numeric string that identifies a
+       specific version of a project. The version string itself MUST NOT have a
+       "v" prefix, but the version string can be displayed with a "v" prefix to
+       indicate it a version that is being referred to.
+    2. The source of truth for project version MUST be a git tag with a name
+       based on the version string. This kind of tag MUST be referred to as a
+       "release tag".
+    3. It is OPTIONAL, but RECOMMENDED to also keep the version string
+       hard-coded somewhere in the project code-base.
+    4. If you hard-code the version string into the code-base, it is RECOMMENDED
+       that you do so in a file called "VERSION" located in the root of the
+       project. But be mindful of the conventions of your programming language
+       and community when choosing if, where and how to hard-code the version
        string.
-    2. If you are not using a release branch, then the version bump commit MUST
-       be created directly on the master branch.
-    3. The version bump commit MUST have a commit message title of "Bump version
-       to VERSION". For example, if the new version string is "2.11.4", the
-       first line of the commit message MUST read: "Bump version to 2.11.4"
-    4. The release tag on the version bump commit MUST be named exactly the same
-       as the version string. The tag name can OPTIONALLY be prefixed with
-       "v". For example the tag name can be either "2.11.4" or "v2.11.4". You
-       MUST NOT use a mix of "v" prefixed and non-prefixed tags. Pick one form
-       and stick to it.
-    5. It is RECOMMENDED that release tags are lightweight tags, but you can
+    5. If you are using a "VERSION" file in the root of the project, this file
+       MUST only contain the exact version string, meaning it MUST NOT have a
+       "v" prefix. For example "v2.11.4" is bad, and "2.11.4" is good.
+    6. It is OPTIONAL, but RECOMMENDED that that the version string follows
+       Semantic Versioning (<http://semver.org/>).
+6. Releases
+    1. To create a new release, you MUST create a git tag named as the exact
+       version string of the release. This kind of tag MUST be referred to as a
+       "release tag".
+    2. The release tag name can OPTIONALLY be prefixed with "v". For example the
+       tag name can be either "2.11.4" or "v2.11.4". You MUST NOT use a mixture
+       of "v" prefixed and non-prefixed tags. Pick one form and stick to it.
+    3. If the version string is hard-coded into the code-base, you MUST create a
+       "version bump" commit which changes the hard-coded version string of the
+       project.
+    4. When using version bump commits, the release tag MUST be placed on the
+       version bump commit.
+    5. If you are not using a release branch, then the release tag, and if
+       relevant the version bump commit, MUST be created directly on the master
+       branch.
+    6. The version bump commit SHOULD have a commit message title of "Bump
+       version to VERSION". For example, if the new version string is "2.11.4",
+       the first line of the commit message SHOULD read: "Bump version to
+       2.11.4"
+    7. It is RECOMMENDED that release tags are lightweight tags, but you can
        OPTIONALLY use annotated tags if you want to include changelog
        information in the release tag itself.
-    6. If you use annotated release tags, the first line of the annotation MUST
-       read "Release VERSION". For example for version "2.11.4" the first line
-       of the tag annotation would read "Release 2.11.4". The second line must
-       be blank, and the changelog MUST start on the third line.
+    8. If you use annotated release tags, the first line of the annotation
+       SHOULD read "Release VERSION". For example for version "2.11.4" the first
+       line of the tag annotation SHOULD read "Release 2.11.4". The second line
+       MUST be blank, and the changelog MUST start on the third line.
 7. Release Branches
     1. Any branch that has a name starting with "release-" SHOULD be referred to
        as a "release branch".
