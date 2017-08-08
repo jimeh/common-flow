@@ -131,51 +131,58 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        SHOULD read "Release VERSION". For example for version "2.11.4" the first
        line of the tag annotation SHOULD read "Release 2.11.4". The second line
        MUST be blank, and the changelog MUST start on the third line.
-7. Release Branches
+7. Short-Term Release Branches
     1. Any branch that has a name starting with "release-" SHOULD be referred to
        as a "release branch".
-    2. Use of release branches is OPTIONAL.
-    3. Changes in a release branch SHOULD typically come from work being
-       done against the master branch. Meaning changes SHOULD only trickle
-       downwards from the master branch. If a change needs to trickle back up
-       into the master branch, that work should have happened against the master
-       branch in the first place. One exception to this is version bump commits.
-    4. There are two types of release branches; short-term, and long-term.
-    5. Short-Term Release Branches
-        1. Used for creating a specific versioned release.
-        2. A short-term release branch is RECOMMENDED if there is a lengthy
-           pre-release verification process to avoid a code freeze on the master
-           branch.
-        3. MUST have a name of "release-VERSION". For example for version
-           "2.11.4" the release branch name MUST be "release-2.11.4".
-        4. When using a short-term release branch, the version bump commit and
-           release tag MUST be made directly on the release branch itself.
-        5. Only very minor changes should be performed on a short-term release
-           branch directly. Any larger changes SHOULD be done in the master
-           branch, and SHOULD be pulled into the release branch by rebasing it
-           on top of the master branch the same way a change branch pulls in
-           updates from its source branch.
-        6. After the version bump commit and release tag have been created, the
-           release branch MUST be merged back into its source branch and then
-           deleted. Typically the source branch will be the master branch.
-    6. Long-Term Release Branches
-        1. Used for work on versions which are not currently part of the master
-           branch. Typically this is useful when you need to create a new
-           maintenance release for a older version.
-        2. The branch name MUST have a non-specific version number. For example
-           a long-term release branch for creating new 2.9.x releases would be
-           named "release-2.9".
-        3. To create a new release from a long-term release branch, you MUST
-           create a version bump commit and release tag directly on the release
-           branch.
-        4. A long-term release branch MUST be created from the relevant release
-           tag. For example if the master branch is on version 2.11.4 and there
-           is a security fix for all 2.9.x releases, the latest of which is
-           "2.9.7". Create a new branch called "release-2.9" off of the "2.9.7"
-           release tag. The security fix release will then end up being version
-           "2.9.8".
-8. Bug Fixes & Rollback
-    1. You MUST NOT under any circumstances force push to the master branch.
+    2. Any release branch which has a name ending with a specific version
+       string, MUST be referred to as a "short-term release branch".
+    3. Use of short-term release branches are OPTIONAL, and intended to be used
+       to create a specific versioned release.
+    4. A short-term release branch is RECOMMENDED if there is a lengthy
+       pre-release verification process to avoid a code freeze on the master
+       branch.
+    5. Short-term release branches MUST have a name of "release-VERSION". For
+       example for version "2.11.4" the release branch name MUST be
+       "release-2.11.4".
+    6. When using a short-term release branch to create a release, the release
+       tag and if used, version bump commit, MUST be placed directly on the
+       short-term release branch itself.
+    7. Only very minor changes should be performed on a short-term release
+       branch directly. Any larger changes SHOULD be done in the master branch,
+       and SHOULD be pulled into the release branch by rebasing it on top of the
+       master branch the same way a change branch pulls in updates from its
+       source branch.
+    8. After a release tag has been created, the release branch MUST be merged
+       back into its source branch and then deleted. Typically the source branch
+       will be the master branch.
+8. Long-term Release Branches
+    1. Any release branch which has a name ending with a non-specific version
+       string, MUST be referred to as a "long-term release branch". For example
+       "release-2.11" is a long-term release branch, while "release-2.11.4" is a
+       short-term release branch.
+    2. Use of long-term release branches are OPTIONAL, and intended for work on
+       versions which are not currently part of the master branch. Typically
+       this is useful when you need to create a new maintenance release for a
+       older version.
+    3. A long-term release branch MUST have a name with a non-specific version
+       number. For example a long-term release branch for creating new 2.9.x
+       releases MUST be named "release-2.9".
+    4. Long-term release branches for maintenance releases of older versions
+       MUST be created from the relevant release tag. For example if the master
+       branch is on version 2.11.4 and there is a security fix for all 2.9.x
+       releases, the latest of which is "2.9.7". Create a new branch called
+       "release-2.9" off of the "2.9.7" release tag. The security fix release
+       will then end up being version "2.9.8".
+    5. To create a new release from a long-term release branch, you MUST follow
+       the same process as a release from the master branch, except the
+       long-term release branch takes the place of the master branch.
+    7. A long-term release branch should be treated with the same respect as the
+       master branch. It is effectively the master branch for the release series
+       in question. Meaning it MUST always be in a non-broken state, MUST NOT be
+       force pushed to, etc.
+9. Bug Fixes & Rollback
+    1. You MUST NOT under any circumstances force push to the master branch or
+       to long-term release branches.
     2. If a change branch which has been merged into the master branch is found
        to have a bug in it, the bug fix work MUST be done as a new separate
        change branch and MUST follow the same workflow as any other change
@@ -184,7 +191,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        reason the merge must be undone, you MUST undo the merge by reverting the
        merge commit itself. Effectively creating a new commit that reverses all
        the relevant changes.
-9. Git Best Practices
+10. Git Best Practices
     1. All commit messages SHOULD follow the Commit Guidelines and format from
        the official git
        documentation:
