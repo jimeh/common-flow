@@ -77,12 +77,20 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        force push, and you SHOULD use the "--force-with-lease" git push option.
 4. Pull Requests
     1. To merge a change branch into its merge target, you MUST open a "pull
-       request" (or equivalent) so others can review and approve your changes.
-    2. A pull request MUST only be merged when the change branch is up-to-date
+       request" (or equivalent).
+    2. The purpose of a pull request is to allow others to review your changes
+       and give feedback. You can then fix any issues, complaints, and more that
+       might arise, and then let people review again.
+    3. Before creating a pull request, it is RECOMMENDED that you consider the
+       state of your change branch's commit history. If it is messy and
+       confusing, it might be a good idea to rebase your branch with "git rebase
+       -i" to present a cleaner and easier to follow commit history for your
+       reviewers.
+    4. A pull request MUST only be merged when the change branch is up-to-date
        with its source branch, the test suite is passing, and you and others are
        happy with the change. This is especially important if the merge target
        is the master branch.
-    3. To get feedback, help, or generally just discuss a change branch with
+    5. To get feedback, help, or generally just discuss a change branch with
        others, the RECOMMENDED way to do so is by creating a pull request and
        discuss the changes with others there.
 5. Versioning
