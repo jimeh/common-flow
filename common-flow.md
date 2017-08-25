@@ -65,8 +65,8 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        history.
     4. You SHOULD regularly push your work to the same named branch on the
        remote server.
-    5. You MUST create separate change branches for each distinctly different
-       change. You MUST NOT include multiple unrelated changes into a single
+    5. You SHOULD create separate change branches for each distinctly different
+       change. You SHOULD NOT include multiple unrelated changes into a single
        change branch.
     6. When a change branch is created, the branch that it is created from
        SHOULD be referred to as the "source branch". Each change branch also
