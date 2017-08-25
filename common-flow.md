@@ -58,21 +58,24 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        release.
 3. Change Branches
     1. Each change (feature, bugfix, etc.) MUST be performed on separate
-       branches that SHOULD be referred to as "change branches". All change
-       branches MUST have descriptive names. It is RECOMMENDED that you commit
-       often locally, and you SHOULD regularly push your work to the same named
-       branch on the remote server.
-    2. You MUST create separate change branches for each distinctly different
+       branches that SHOULD be referred to as "change branches".
+    2. All change branches MUST have descriptive names.
+    3. It is RECOMMENDED that you commit often locally, and that you try and
+       keep the commits reasonably structured to avoid a messy and confusing git
+       history.
+    4. You SHOULD regularly push your work to the same named branch on the
+       remote server.
+    5. You MUST create separate change branches for each distinctly different
        change. You MUST NOT include multiple unrelated changes into a single
        change branch.
-    3. When a change branch is created, the branch that it is created from
+    6. When a change branch is created, the branch that it is created from
        SHOULD be referred to as the "source branch". Each change branch also
        needs a designated "merge target" branch, typically this will be the same
        as the source branch.
-    4. Change branches MUST be regularly updated with any changes from their
+    7. Change branches MUST be regularly updated with any changes from their
        source branch. This MUST be done by rebasing the change branch on top of
        the source branch.
-    5. After rebasing a change branch on top of its source branch you MUST push
+    8. After rebasing a change branch on top of its source branch you MUST push
        the change branch to the remote server. This will require you to do a
        force push, and you SHOULD use the "--force-with-lease" git push option.
 4. Pull Requests
