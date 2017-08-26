@@ -238,9 +238,35 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 FAQ
 ---
 
-**Why use Common-Flow instead of Git Flow, and how do they differ?**
+**Why use Common-Flow instead of Git Flow, and how does it differ?**
 
-[answer goes here]
+Common-Flow tries to be a lot less complicated than Git Flow by having fewer
+types of branches, and simpler rules. Normal day to development doesn't really
+change much:
+
+- You create change branches instead of feature branches, without the need of a
+  "feature/" or "change/" prefix in the branch name.
+- Change branches are typically created off of and merged back into "master"
+  instead of "develop".
+- Creating a release is done by simply creating a git tag, typically on the
+  master branch.
+
+In detail, the main differences between Git Flow and Common-Flow are:
+
+- There is no "develop" branch, there is only a "master" branch which contains
+  the latest work. In Git Flow the master branch effectively ends up just being
+  a pointer to the latest release, despite the fact that Git Flow includes
+  release tags too. In Common-Flow you just look at the tags to find the latest
+  release.
+- There are no "feature" or "hotfix" branches, there's only "change"
+  branches. Any branch that is not master and introduces changes is a change
+  branch. Change branches also don't have a enforced naming convention, they
+  just have to have a "descriptive name". This makes things simpler and allows
+  more flexibility.
+- Release branches are available, but optional. Instead of enforcing the use of
+  release branches like Git Flow, Common-Flow only recommends the use of release
+  branches when it makes things easier. If creating a new release by tagging
+  "master" works for you, great, do that.
 
 **What does "descriptive name" mean in terms of change branches?**
 
