@@ -238,7 +238,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 FAQ
 ---
 
-**Why use Common-Flow instead of Git Flow, and how does it differ?**
+### Why use Common-Flow instead of Git Flow, and how does it differ?
 
 Common-Flow tries to be a lot less complicated than Git Flow by having fewer
 types of branches, and simpler rules. Normal day to development doesn't really
@@ -268,7 +268,7 @@ In detail, the main differences between Git Flow and Common-Flow are:
   branches when it makes things easier. If creating a new release by tagging
   "master" works for you, great, do that.
 
-**Why use Common-Flow instead of GitHub Flow, and how does it differ?**
+### Why use Common-Flow instead of GitHub Flow, and how does it differ?
 
 Common-Flow is essentially GitHub Flow with the addition of a "Release" concept
 that uses tags. It also attempts to define how certain common tasks are done,
@@ -284,7 +284,7 @@ However if your deployments/releases have specific version numbers, then
 Common-Flow gives you a simple set of rules of how to create and manage
 releases, on top of what GitHub Flow already does.
 
-**What does "descriptive name" mean in terms of change branches?**
+### What does "descriptive name" mean in terms of change branches?
 
 It means what it sounds like. The name should be descriptive, as in by just
 reading the name of the branch you should understand what the branch's purpose
@@ -302,14 +302,13 @@ not needed when branch names are properly descriptive. However there's nothing
 to say you can't use such prefixes if you want. That also means that you can add
 ticket number prefixes if your team/org has that as part of it's process.
 
-**What if there's a emergency hotfix that needs to be released, but for whatever
-reason, the master branch has changes that cannot be released right now?**
+### How do we release an emergency hotfix when the master branch is broken?**
 
-This should ideally never happen, as it most likely means the master branch is
-broken. However if it does happen, you can do one of the following:
+This should ideally never happen, however if it does you can do one of the
+following:
 
-- Review why the master branch can't be deployed, and revert the changes that
-  are preventing a release. Then apply the hotfix and release.
+- Review why the master branch is broken and revert the changes that caused the
+  issues. Then apply the hotfix and release.
 - Or use a short-term release branch created from the latest release tag instead
   of the master branch. Apply the hotfix to the release branch, create a release
   tag on the release branch, and then merge it back into master.
@@ -318,7 +317,7 @@ In this situation, it is recommended you try to revert the offending changes
 that's preventing a new release from master. But if that proves to be a
 complicated task and you're short on time, a short-term release branch gives you
 a instant fix to the situation at hand, and let's you resolve the issues with
-the master branch when you have time.
+the master branch when you have more time on your hands.
 
 About
 -----
