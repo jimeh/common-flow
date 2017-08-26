@@ -302,7 +302,7 @@ not needed when branch names are properly descriptive. However there's nothing
 to say you can't use such prefixes if you want. That also means that you can add
 ticket number prefixes if your team/org has that as part of it's process.
 
-### How do we release an emergency hotfix when the master branch is broken?**
+### How do we release an emergency hotfix when the master branch is broken?
 
 This should ideally never happen, however if it does you can do one of the
 following:
