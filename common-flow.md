@@ -238,6 +238,10 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 FAQ
 ---
 
+**Why use Common-Flow instead of Git Flow, and how do they differ?**
+
+[answer goes here]
+
 **What does "descriptive name" mean in terms of change branches?**
 
 [answer goes here]
