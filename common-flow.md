@@ -29,9 +29,8 @@ Terminology
   branch.
 - **Pull Request** - A means of requesting that a change branch is merged in to
   its merge target, allowing others to review, discuss and approve the changes.
-- **Release** - May be considered safe to use in production
-  environments. Consists of a version bump commit, and a git tag named according
-  to the new version string placed on said commit.
+- **Release** - May be considered safe to use in production environments. Is
+  effectively just a git tag named after the version of the release.
 - **Release Branches** - Used both for short-term preparations of a release, and
   also for long-term maintenance of older version.
 
