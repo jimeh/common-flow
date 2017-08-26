@@ -284,7 +284,7 @@ However if your deployments/releases have specific version numbers, then
 Common-Flow gives you a simple set of rules of how to create and manage
 releases, on top of what GitHub Flow already does.
 
-### What does "descriptive name" mean in terms of change branches?
+### What does "descriptive name" mean for change branches?
 
 It means what it sounds like. The name should be descriptive, as in by just
 reading the name of the branch you should understand what the branch's purpose
