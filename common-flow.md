@@ -241,8 +241,8 @@ FAQ
 ### Why use Common-Flow instead of Git Flow, and how does it differ?
 
 Common-Flow tries to be a lot less complicated than Git Flow by having fewer
-types of branches, and simpler rules. Normal day to development doesn't really
-change much:
+types of branches, and simpler rules. Normal day to day development doesn't
+really change much:
 
 - You create change branches instead of feature branches, without the need of a
   "feature/" or "change/" prefix in the branch name.
