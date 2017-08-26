@@ -100,8 +100,8 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     1. A "version string" is a typically mostly numeric string that identifies a
        specific version of a project. The version string itself MUST NOT have a
        "v" prefix, but the version string can be displayed with a "v" prefix to
-       indicate it a version that is being referred to.
-    2. The source of truth for project version MUST be a git tag with a name
+       indicate it is a version that is being referred to.
+    2. The source of truth for a project's version MUST be a git tag with a name
        based on the version string. This kind of tag MUST be referred to as a
        "release tag".
     3. It is OPTIONAL, but RECOMMENDED to also keep the version string
