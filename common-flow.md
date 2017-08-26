@@ -209,8 +209,9 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        documentation:
        <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
     2. You SHOULD never blindly commit all changes with "git commit -a". It is
-       RECOMMENDED you use "git add -p" or "git add -i" to add individual changes to the staging
-       area so you are fully aware of what you are committing.
+       RECOMMENDED you use "git add -i" or "git add -p" to add individual
+       changes to the staging area so you are fully aware of what you are
+       committing.
     3. You SHOULD always use "--force-with-lease" when doing a force push. The
        regular "--force" option is dangerous and destructive. More
        information:
