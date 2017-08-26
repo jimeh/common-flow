@@ -121,8 +121,9 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        version string of the release. This kind of tag MUST be referred to as a
        "release tag".
     2. The release tag name can OPTIONALLY be prefixed with "v". For example the
-       tag name can be either "2.11.4" or "v2.11.4". You MUST NOT use a mixture
-       of "v" prefixed and non-prefixed tags. Pick one form and stick to it.
+       tag name can be either "2.11.4" or "v2.11.4". It is however RECOMMENDED
+       that you do not use a "v" prefix. You MUST NOT use a mixture of "v"
+       prefixed and non-prefixed tags. Pick one form and stick to it.
     3. If the version string is hard-coded into the code-base, you MUST create a
        "version bump" commit which changes the hard-coded version string of the
        project.
