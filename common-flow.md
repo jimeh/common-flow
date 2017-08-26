@@ -303,9 +303,22 @@ to say you can't use such prefixes if you want. That also means that you can add
 ticket number prefixes if your team/org has that as part of it's process.
 
 **What if there's a emergency hotfix that needs to be released, but for whatever
-reason, master has changes that cannot be released right now?**
+reason, the master branch has changes that cannot be released right now?**
 
-[answer goes here]
+This should ideally never happen, as it most likely means the master branch is
+broken. However if it does happen, you can do one of the following:
+
+- Review why the master branch can't be deployed, and revert the changes that
+  are preventing a release. Then apply the hotfix and release.
+- Or use a short-term release branch created from the latest release tag instead
+  of the master branch. Apply the hotfix to the release branch, create a release
+  tag on the release branch, and then merge it back into master.
+
+In this situation, it is recommended you try to revert the offending changes
+that's preventing a new release from master. But if that proves to be a
+complicated task and you're short on time, a short-term release branch gives you
+a instant fix to the situation at hand, and let's you resolve the issues with
+the master branch when you have time.
 
 About
 -----
