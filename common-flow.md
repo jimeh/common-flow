@@ -268,6 +268,22 @@ In detail, the main differences between Git Flow and Common-Flow are:
   branches when it makes things easier. If creating a new release by tagging
   "master" works for you, great, do that.
 
+**Why use Common-Flow instead of GitHub Flow, and how does it differ?**
+
+Common-Flow is essentially GitHub Flow with the addition of a "Release" concept
+that uses tags. It also attempts to define how certain common tasks are done,
+like updating change/feature branches from their source branches for
+example. This is to help end arguments about how such things are done.
+
+If a deployment/release for you is just getting the latest code in the master
+branch out, without caring about bumping version numbers or anything, then
+GitHub Flow is a good fit for you, and you probably don't need the extras of
+Common-Flow.
+
+However if your deployments/releases have specific version numbers, then
+Common-Flow gives you a simple set of rules of how to create and manage
+releases, on top of what GitHub Flow already does.
+
 **What does "descriptive name" mean in terms of change branches?**
 
 [answer goes here]
