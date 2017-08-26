@@ -286,7 +286,21 @@ releases, on top of what GitHub Flow already does.
 
 **What does "descriptive name" mean in terms of change branches?**
 
-[answer goes here]
+It means what it sounds like. The name should be descriptive, as in by just
+reading the name of the branch you should understand what the branch's purpose
+is and what it does. Here's a few examples:
+
+- add-2fa-support
+- fix-login-issue
+- remove-sort-by-middle-name-functionality
+- update-font-awesome
+- change-search-behavior
+- tweak-footer-style
+
+Notice how none of these have any prefixes like "feature/" or "hotfix/", they're
+not needed when branch names are properly descriptive. However there's nothing
+to say you can't use such prefixes if you want. That also means that you can add
+ticket number prefixes if your team/org has that as part of it's process.
 
 **What if there's a emergency hotfix that needs to be released, but for whatever
 reason, master has changes that cannot be released right now?**
