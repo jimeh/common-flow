@@ -74,9 +74,18 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     7. Change branches MUST be regularly updated with any changes from their
        source branch. This MUST be done by rebasing the change branch on top of
        the source branch.
-    8. After rebasing a change branch on top of its source branch you MUST push
-       the change branch to the remote server. This will require you to do a
-       force push, and you SHOULD use the "--force-with-lease" git push option.
+    8. After updating a change branch from its source branch you MUST push the
+       change branch to the remote server. Due to the nature of rebasing, you
+       will be required to do a force push, and you MUST use the
+       "--force-with-lease" git push option when doing so instead of the regular
+       "--force".
+    9. If there is a truly valid technical reason to not use rebase when
+       updating change branches, then you can update change branches via merge
+       instead of rebase. The decision to use merge MUST only be taken after all
+       possible options to use rebase have been tried and failed. People not
+       understanding how to use rebase is NOT a valid reason to use merge. If
+       you do decide to use merge instead of rebase, you MUST NOT use a mixture
+       of both methods, pick one and stick to it.
 4. Pull Requests
     1. To merge a change branch into its merge target, you MUST open a "pull
        request" (or equivalent).
