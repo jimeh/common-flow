@@ -323,7 +323,7 @@ About
 -----
 
 The Git Common-Flow specification is authored
-by [Jim Myhrberg](http://jimeh.me).
+by [Jim Myhrberg](https://jimeh.me/).
 
 If you'd like to leave feedback,
 please [open an issue on GitHub](https://github.com/jimeh/common-flow/issues).
