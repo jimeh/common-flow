@@ -331,4 +331,4 @@ please [open an issue on GitHub](https://github.com/jimeh/common-flow/issues).
 License
 -------
 
-[Creative Commons - CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+[Creative Commons - CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
