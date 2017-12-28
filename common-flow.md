@@ -191,8 +191,8 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        MUST be created from the relevant release tag. For example if the master
        branch is on version 2.11.4 and there is a security fix for all 2.9.x
        releases, the latest of which is "2.9.7". Create a new branch called
-       "release-2.9" off of the "2.9.7" release tag. The security fix release
-       will then end up being version "2.9.8".
+       "release-2.9" from the "2.9.7" release tag. The security fix release will
+       then end up being version "2.9.8".
     5. To create a new release from a long-term release branch, you MUST follow
        the same process as a release from the master branch, except the
        long-term release branch takes the place of the master branch.
@@ -246,7 +246,7 @@ really change much:
 
 - You create change branches instead of feature branches, without the need of a
   "feature/" or "change/" prefix in the branch name.
-- Change branches are typically created off of and merged back into "master"
+- Change branches are typically created from and merged back into "master"
   instead of "develop".
 - Creating a release is done by simply creating a git tag, typically on the
   master branch.
