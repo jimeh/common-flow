@@ -1,8 +1,8 @@
 Git Common-Flow {{version}}
 ===========================
 
-Summary
--------
+Introduction
+------------
 
 Common-Flow is an attempt to gather a sensible selection of the most common
 usage patterns of git into a single and concise specification. It is based on
