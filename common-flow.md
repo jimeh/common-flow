@@ -102,8 +102,9 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        happy with the change. This is especially important if the merge target
        is the master branch.
     5. To get feedback, help, or generally just discuss a change branch with
-       others, the RECOMMENDED way to do so is by creating a pull request and
-       discuss the changes with others there.
+       others, it is RECOMMENDED you create a pull request and discuss the
+       changes with others there. This leaves a clear and visible history of
+       how, when, and why the code looks and behaves the way it does.
 5. Versioning
     1. A "version string" is a typically mostly numeric string that identifies a
        specific version of a project. The version string itself MUST NOT have a
