@@ -8,7 +8,7 @@ Common-Flow is an attempt to gather a sensible selection of the most common
 usage patterns of git into a single and concise specification. It is based on
 the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
 of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
-into account how a lot of open source projects use git.
+into account how a lot of open source projects most commonly use git.
 
 In short, Common-Flow is essentially GitHub Flow with the addition of versioned
 releases, optional release branches, and without the requirement to deploy to
@@ -42,7 +42,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
 1. TL;DR
-    1. Don't break the master branch.
+    1. Do not break the master branch.
     2. A release is a git tag.
 2. The Master Branch
     1. A branch named "master" MUST exist and it MUST be referred to as the
