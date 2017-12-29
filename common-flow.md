@@ -299,8 +299,13 @@ is and what it does. Here's a few examples:
 
 Notice how none of these have any prefixes like "feature/" or "hotfix/", they're
 not needed when branch names are properly descriptive. However there's nothing
-to say you can't use such prefixes if you want. That also means that you can add
-ticket number prefixes if your team/org has that as part of it's process.
+to say you can't use such prefixes if you want.
+
+You can also add ticket numbers to the branch name if your team/org has that as
+part of it's process. But it is recommended that ticket numbers are added to the
+end of the branch name. The ticket number is essentially metadata, so put it at
+the end and out of the way of humans trying to read the descriptive name from
+left to right.
 
 ### How do we release an emergency hotfix when the master branch is broken?
 
