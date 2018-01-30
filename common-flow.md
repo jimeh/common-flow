@@ -310,6 +310,7 @@ is and what it does. Here's a few examples:
 - remove-sort-by-middle-name-functionality
 - update-font-awesome
 - change-search-behavior
+- improve-pagination-performance
 - tweak-footer-style
 
 Notice how none of these have any prefixes like "feature/" or "hotfix/", they're
