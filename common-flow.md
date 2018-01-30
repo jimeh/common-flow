@@ -41,12 +41,12 @@ Summary
   be broken.
 - Changes (features, bugfixes, etc.) are done on "change branches" created from
   the master branch.
-- [Rebase early and often.](https://i.imgur.com/1RS8x2d.png)
+- Rebase change branches [early and often](https://i.imgur.com/1RS8x2d.png).
 - When a change branch is stable and ready, it is merged back in to master.
 - A release is just a git tag who's name is the exact release version string
   (e.g. "2.11.4").
 - Release branches can be used to avoid a change freezes on master. They are not
-  required, instead they are available if you do need them.
+  required, instead they are available if you need them.
 
 Git Common-Flow Specification (Common-Flow)
 -------------------------------------------
