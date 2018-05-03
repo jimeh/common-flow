@@ -14,6 +14,20 @@ In short, Common-Flow is essentially GitHub Flow with the addition of versioned
 releases, optional release branches, and without the requirement to deploy to
 production all the time.
 
+Summary
+-------
+
+- The "master" branch is the mainline branch with latest changes, and must not
+  be broken.
+- Changes (features, bugfixes, etc.) are done on "change branches" created from
+  the master branch.
+- Rebase change branches [early and often](https://i.imgur.com/1RS8x2d.png).
+- When a change branch is stable and ready, it is merged back in to master.
+- A release is just a git tag who's name is the exact release version string
+  (e.g. "2.11.4").
+- Release branches can be used to avoid a change freezes on master. They are not
+  required, instead they are available if you need them.
+
 Terminology
 -----------
 
@@ -33,20 +47,6 @@ Terminology
   effectively just a git tag named after the version of the release.
 - **Release Branches** - Used both for short-term preparations of a release, and
   also for long-term maintenance of older version.
-
-Summary
--------
-
-- The "master" branch is the mainline branch with latest changes, and must not
-  be broken.
-- Changes (features, bugfixes, etc.) are done on "change branches" created from
-  the master branch.
-- Rebase change branches [early and often](https://i.imgur.com/1RS8x2d.png).
-- When a change branch is stable and ready, it is merged back in to master.
-- A release is just a git tag who's name is the exact release version string
-  (e.g. "2.11.4").
-- Release branches can be used to avoid a change freezes on master. They are not
-  required, instead they are available if you need them.
 
 Git Common-Flow Specification (Common-Flow)
 -------------------------------------------
