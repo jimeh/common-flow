@@ -25,7 +25,7 @@ Summary
 - When a change branch is stable and ready, it is merged back in to master.
 - A release is just a git tag who's name is the exact release version string
   (e.g. "2.11.4").
-- Release branches can be used to avoid a change freezes on master. They are not
+- Release branches can be used to avoid change freezes on master. They are not
   required, instead they are available if you need them.
 
 Terminology
