@@ -46,7 +46,7 @@ Terminology
 - **Release** - May be considered safe to use in production environments. Is
   effectively just a git tag named after the version of the release.
 - **Release Branches** - Used both for short-term preparations of a release, and
-  also for long-term maintenance of older version.
+  also for long-term maintenance of an older version.
 
 Git Common-Flow Specification (Common-Flow)
 -------------------------------------------
