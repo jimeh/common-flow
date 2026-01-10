@@ -155,10 +155,10 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     5. If you are not using a release branch, then the release tag, and if
        relevant the version bump commit, MUST be created directly on the main
        branch.
-    6. The version bump commit SHOULD have a commit message title of "Bump
-       version to VERSION". For example, if the new version string is "2.11.4",
-       the first line of the commit message SHOULD read: "Bump version to
-       2.11.4"
+    6. The version bump commit SHOULD have a commit message following the
+       Conventional Commits format. For example "chore(release): 2.11.4" or
+       "chore: bump version to 2.11.4". Alternatively a simple "Bump version to
+       2.11.4" format is acceptable.
     7. It is RECOMMENDED that release tags are lightweight tags, but you can
        OPTIONALLY use annotated tags if you want to include changelog
        information in the release tag itself.
@@ -166,6 +166,16 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        SHOULD read "Release VERSION". For example for version "2.11.4" the first
        line of the tag annotation SHOULD read "Release 2.11.4". The second line
        MUST be blank, and the changelog MUST start on the third line.
+    9. When using Conventional Commits, breaking changes MUST be indicated
+       either by appending "!" after the type/scope (e.g. "feat!:" or
+       "feat(api)!:"), or by including a "BREAKING CHANGE:" footer in the commit
+       message. Breaking changes correspond to a MAJOR version bump in Semantic
+       Versioning.
+    10. When using Conventional Commits along with Semantic Versioning, commits
+        of type "fix" correspond to PATCH releases, commits of type "feat"
+        correspond to MINOR releases, and commits with breaking changes
+        correspond to MAJOR releases. This alignment enables automated version
+        determination and changelog generation.
 7. Short-Term Release Branches
     1. Any branch that has a name starting with "release-" SHOULD be referred to
        as a "release branch".
@@ -227,9 +237,12 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        merge commit itself. Effectively creating a new commit that reverses all
        the relevant changes.
 10. Git Best Practices
-    1. All commit messages SHOULD follow the Commit Guidelines and format from
-       the official git
-       documentation:
+    1. It is RECOMMENDED that all commit messages follow the Conventional
+       Commits specification (<https://www.conventionalcommits.org/>). This
+       provides a structured format that integrates well with Semantic
+       Versioning, and enables automated changelog generation. At minimum,
+       commit messages SHOULD follow the Commit Guidelines from the official
+       git documentation:
        <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
     2. You SHOULD never blindly commit all changes with "git commit -a". It is
        RECOMMENDED you use "git add -i" or "git add -p" to add individual
@@ -249,6 +262,10 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        commits, allows one to revert a merge by reverting a single merge commit,
        and creates a merge commit to mark the integration of the branch with
        main.
+    7. When using Conventional Commits, it is RECOMMENDED to use tooling to
+       automatically generate changelogs from commit messages. This pairs well
+       with the release process and ensures changelogs are consistent and
+       complete.
 
 FAQ
 ---
