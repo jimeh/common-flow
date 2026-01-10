@@ -251,7 +251,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     3. You SHOULD always use "--force-with-lease" when doing a force push. The
        regular "--force" option is dangerous and destructive. More
        information:
-       <https://developer.atlassian.com/blog/2015/04/force-with-lease/>
+       <https://www.codestudy.net/blog/git-push-force-with-lease-vs-force/>
     4. You SHOULD understand and be comfortable with
        rebasing: <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
     5. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
