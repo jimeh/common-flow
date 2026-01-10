@@ -6,9 +6,9 @@ Introduction
 
 Common-Flow is an attempt to gather a sensible selection of the most common
 usage patterns of git into a single and concise specification. It is based on
-the [original variant](http://scottchacon.com/2011/08/31/github-flow.html)
-of [GitHub Flow](https://guides.github.com/introduction/flow/), while taking
-into account how a lot of open source projects most commonly use git.
+the [original variant](http://scottchacon.com/2011/08/31/github-flow.html) of
+[GitHub Flow](https://guides.github.com/introduction/flow/), while taking into
+account how a lot of open source projects most commonly use git.
 
 In short, Common-Flow is essentially GitHub Flow with the addition of versioned
 releases, optional release branches, and without the requirement to deploy to
@@ -17,8 +17,8 @@ production all the time.
 Summary
 -------
 
-- The "main" branch is the mainline branch with latest changes, and must not
-  be broken.
+- The "main" branch is the mainline branch with latest changes, and must not be
+  broken.
 - Changes (features, bugfixes, etc.) are done on "change branches" created from
   the main branch.
 - Rebase change branches [early and often](https://i.imgur.com/1RS8x2d.png).
@@ -31,10 +31,10 @@ Summary
 Terminology
 -----------
 
-- **Main Branch** - Must be named "main", must always have passing tests,
-  and is not guaranteed to always work in production environments.
+- **Main Branch** - Must be named "main", must always have passing tests, and is
+  not guaranteed to always work in production environments.
 - **Change Branches** - Any branch that introduces changes like a new feature, a
-  bug fix, etc.
+  bugfix, etc.
 - **Source Branch** - The branch that a change branch was created from. New
   changes in the source branch should be incorporated into the change branch via
   rebasing.
@@ -46,7 +46,7 @@ Terminology
 - **Release** - May be considered safe to use in production environments. Is
   effectively just a git tag named after the version of the release.
 - **Release Branches** - Used both for short-term preparations of a release, and
-  also for long-term maintenance of older version.
+  for long-term maintenance of older versions.
 
 Git Common-Flow Specification (Common-Flow)
 -------------------------------------------
@@ -59,10 +59,10 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     1. Do not break the main branch.
     2. A release is a git tag.
 2. The Main Branch
-    1. A branch named "main" MUST exist and it MUST be referred to as the
-       "main branch".
-    2. The main branch MUST always be in a non-broken state with its test
-       suite passing.
+    1. A branch named "main" MUST exist and it MUST be referred to as the "main
+       branch".
+    2. The main branch MUST always be in a non-broken state with its test suite
+       passing.
     3. The main branch IS NOT guaranteed to always work in production
        environments. Despite test suites passing it may at times contain
        unfinished work. Only releases may be considered safe for production use.
@@ -136,17 +136,17 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        string.
     5. If you are using a "VERSION" file in the root of the project, this file
        MUST only contain the exact version string, meaning it MUST NOT have a
-       "v" prefix. For example "v2.11.4" is bad, and "2.11.4" is good.
-    6. It is OPTIONAL, but RECOMMENDED that that the version string follows
-       Semantic Versioning (<http://semver.org/>).
+       "v" prefix. For example, "v2.11.4" is bad, and "2.11.4" is good.
+    6. It is OPTIONAL, but RECOMMENDED that the version string follows Semantic
+       Versioning (<http://semver.org/>).
 6. Releases
     1. To create a new release, you MUST create a git tag named as the exact
        version string of the release. This kind of tag MUST be referred to as a
        "release tag".
-    2. The release tag name can OPTIONALLY be prefixed with "v". For example the
-       tag name can be either "2.11.4" or "v2.11.4". It is however RECOMMENDED
-       that you do not use a "v" prefix. You MUST NOT use a mixture of "v"
-       prefixed and non-prefixed tags. Pick one form and stick to it.
+    2. The release tag name can OPTIONALLY be prefixed with "v". For example,
+       the tag name can be either "2.11.4" or "v2.11.4". It is however
+       RECOMMENDED that you do not use a "v" prefix. You MUST NOT use a mixture
+       of "v" prefixed and non-prefixed tags. Pick one form and stick to it.
     3. If the version string is hard-coded into the code-base, you MUST create a
        "version bump" commit which changes the hard-coded version string of the
        project.
@@ -156,8 +156,8 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        relevant the version bump commit, MUST be created directly on the main
        branch.
     6. The version bump commit SHOULD have a commit message following the
-       Conventional Commits format. For example "chore(release): 2.11.4" or
-       "chore: bump version to 2.11.4". Alternatively a simple "Bump version to
+       Conventional Commits format. For example, "chore(release): 2.11.4" or
+       "chore: bump version to 2.11.4". Alternatively, a simple "Bump version to
        2.11.4" format is acceptable.
     7. It is RECOMMENDED that release tags are lightweight tags, but you can
        OPTIONALLY use annotated tags if you want to include changelog
@@ -184,7 +184,7 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     3. Use of short-term release branches are OPTIONAL, and intended to be used
        to create a specific versioned release.
     4. A short-term release branch is RECOMMENDED if there is a lengthy
-       pre-release verification process to avoid a code freeze on the main
+       prerelease verification process to avoid a code freeze on the main
        branch.
     5. Short-term release branches MUST have a name of "release-VERSION". For
        example for version "2.11.4" the release branch name MUST be
@@ -195,43 +195,43 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
     7. Only very minor changes should be performed on a short-term release
        branch directly. Any larger changes SHOULD be done in the main branch,
        and SHOULD be pulled into the release branch by rebasing it on top of the
-       main branch the same way a change branch pulls in updates from its
-       source branch.
+       main branch the same way a change branch pulls in updates from its source
+       branch.
     8. After a release tag has been created, the release branch MUST be merged
        back into its source branch and then deleted. Typically the source branch
        will be the main branch.
 8. Long-term Release Branches
-    1. Any release branch which has a name ending with a non-specific version
-       string, MUST be referred to as a "long-term release branch". For example
+    1. Any release branch which has a name ending with a nonspecific version
+       string, MUST be referred to as a "long-term release branch". For example,
        "release-2.11" is a long-term release branch, while "release-2.11.4" is a
        short-term release branch.
     2. Use of long-term release branches are OPTIONAL, and intended for work on
-       versions which are not currently part of the main branch. Typically
-       this is useful when you need to create a new maintenance release for a
-       older version.
-    3. A long-term release branch MUST have a name with a non-specific version
-       number. For example a long-term release branch for creating new 2.9.x
+       versions which are not currently part of the main branch. Typically this
+       is useful when you need to create a new maintenance release for an older
+       version.
+    3. A long-term release branch MUST have a name with a nonspecific version
+       number. For example, a long-term release branch for creating new 2.9.x
        releases MUST be named "release-2.9".
     4. Long-term release branches for maintenance releases of older versions
-       MUST be created from the relevant release tag. For example if the main
+       MUST be created from the relevant release tag. For example, if the main
        branch is on version 2.11.4 and there is a security fix for all 2.9.x
        releases, the latest of which is "2.9.7". Create a new branch called
        "release-2.9" from the "2.9.7" release tag. The security fix release will
        then end up being version "2.9.8".
     5. To create a new release from a long-term release branch, you MUST follow
-       the same process as a release from the main branch, except the
-       long-term release branch takes the place of the main branch.
+       the same process as a release from the main branch, except the long-term
+       release branch takes the place of the main branch.
     6. A long-term release branch should be treated with the same respect as the
-       main branch. It is effectively the main branch for the release series
-       in question. Meaning it MUST always be in a non-broken state, MUST NOT be
+       main branch. It is effectively the main branch for the release series in
+       question. Meaning it MUST always be in a non-broken state, MUST NOT be
        force pushed to, etc.
 9. Bug Fixes & Rollback
-    1. You MUST NOT under any circumstances force push to the main branch or
-       to long-term release branches.
-    2. If a change branch which has been merged into the main branch is found
-       to have a bug in it, the bug fix work MUST be done as a new separate
-       change branch and MUST follow the same workflow as any other change
-       branch.
+    1. You MUST NOT under any circumstances force push to the main branch or to
+       long-term release branches.
+    2. If a change branch which has been merged into the main branch is found to
+       have a bug in it, the bugfix work MUST be done as a new separate change
+       branch. This new change branch MUST follow the same workflow as any other
+       change branch.
     3. If a change branch is wrongfully merged into main, or for any other
        reason the merge must be undone, you MUST undo the merge by reverting the
        merge commit itself. Effectively creating a new commit that reverses all
@@ -241,19 +241,18 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
        Commits specification (<https://www.conventionalcommits.org/>). This
        provides a structured format that integrates well with Semantic
        Versioning, and enables automated changelog generation. At minimum,
-       commit messages SHOULD follow the Commit Guidelines from the official
-       git documentation:
+       commit messages SHOULD follow the Commit Guidelines from the official git
+       documentation:
        <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
     2. You SHOULD never blindly commit all changes with "git commit -a". It is
        RECOMMENDED you use "git add -i" or "git add -p" to add individual
        changes to the staging area so you are fully aware of what you are
        committing.
     3. You SHOULD always use "--force-with-lease" when doing a force push. The
-       regular "--force" option is dangerous and destructive. More
-       information:
+       regular "--force" option is dangerous and destructive. More information:
        <https://www.codestudy.net/blog/git-push-force-with-lease-vs-force/>
-    4. You SHOULD understand and be comfortable with
-       rebasing: <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
+    4. You SHOULD understand and be comfortable with rebasing:
+       <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
     5. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
        pull" to avoid unnecessary merge commits. You can make this the default
        behavior of "git pull" with "git config --global pull.rebase true".
@@ -278,23 +277,21 @@ really change much:
 
 - You create change branches instead of feature branches, without the need of a
   "feature/" or "change/" prefix in the branch name.
-- Change branches are typically created from and merged back into "main"
-  instead of "develop".
-- Creating a release is done by simply creating a git tag, typically on the
-  main branch.
+- Change branches are typically created from and merged back into "main" instead
+  of "develop".
+- Creating a release is done by simply creating a git tag, typically on the main
+  branch.
 
 In detail, the main differences between Git Flow and Common-Flow are:
 
-- There is no "develop" branch, there is only a "main" branch which contains
-  the latest work. In Git Flow the main branch effectively ends up just being
-  a pointer to the latest release, despite the fact that Git Flow includes
-  release tags too. In Common-Flow you just look at the tags to find the latest
-  release.
-- There are no "feature" or "hotfix" branches, there's only "change"
-  branches. Any branch that is not main and introduces changes is a change
-  branch. Change branches also don't have a enforced naming convention, they
-  just have to have a "descriptive name". This makes things simpler and allows
-  more flexibility.
+- There is no "develop" branch, there is only a "main" branch which contains the
+  latest work. In Git Flow the main branch effectively ends up just being a
+  pointer to the latest release, despite the fact that Git Flow includes release
+  tags too. In Common-Flow you just look at the tags to find the latest release.
+- There are no "feature" or "hotfix" branches, there's only "change" branches.
+  Any branch that is not main and introduces changes is a change branch. Change
+  branches also don't have an enforced naming convention, they just need to have
+  a "descriptive name". This makes things simpler and allows more flexibility.
 - Release branches are available, but optional. Instead of enforcing the use of
   release branches like Git Flow, Common-Flow only recommends the use of release
   branches when it makes things easier. If creating a new release by tagging
@@ -304,16 +301,15 @@ In detail, the main differences between Git Flow and Common-Flow are:
 
 Common-Flow is essentially GitHub Flow with the addition of a "Release" concept
 that uses tags. It also attempts to define how certain common tasks are done,
-like updating change/feature branches from their source branches for
-example. This is to help end arguments about how such things are done.
+like updating change/feature branches from their source branches for example.
+This is to help end arguments about how such things are done.
 
 If a deployment/release for you is just getting the latest code in the main
-branch out, without caring about bumping version numbers or anything, then
-GitHub Flow is a good fit for you, and you probably don't need the extras of
-Common-Flow.
+branch out without caring about bumping version numbers, GitHub Flow is a good
+fit for you. You probably don't need the extras of Common-Flow.
 
-However if your deployments/releases have specific version numbers, then
-Common-Flow gives you a simple set of rules of how to create and manage
+However, if your deployments/releases have specific version numbers, then
+Common-Flow gives you a simple set of rules for how to create and manage
 releases, on top of what GitHub Flow already does.
 
 ### What does "descriptive name" mean for change branches?
@@ -331,11 +327,11 @@ is and what it does. Here's a few examples:
 - tweak-footer-style
 
 Notice how none of these have any prefixes like "feature/" or "hotfix/", they're
-not needed when branch names are properly descriptive. However there's nothing
+not needed when branch names are properly descriptive. However, there's nothing
 to say you can't use such prefixes if you want.
 
 You can also add ticket numbers to the branch name if your team/org has that as
-part of it's process. But it is recommended that ticket numbers are added to the
+part of its process. But it is recommended that ticket numbers are added to the
 end of the branch name. The ticket number is essentially metadata, so put it at
 the end and out of the way of humans trying to read the descriptive name from
 left to right.
@@ -354,17 +350,17 @@ following:
 In this situation, it is recommended you try to revert the offending changes
 that's preventing a new release from main. But if that proves to be a
 complicated task and you're short on time, a short-term release branch gives you
-a instant fix to the situation at hand, and let's you resolve the issues with
-the main branch when you have more time on your hands.
+an instant fix to the situation at hand. You can then resolve the issues with
+the main branch later.
 
 About
 -----
 
-The Git Common-Flow specification is authored
-by [Jim Myhrberg](https://jimeh.me/).
+The Git Common-Flow specification is authored by [Jim
+Myhrberg](https://jimeh.me/).
 
-If you'd like to leave feedback,
-please [open an issue on GitHub](https://github.com/jimeh/common-flow/issues).
+If you'd like to leave feedback, please [open an issue on
+GitHub](https://github.com/jimeh/common-flow/issues).
 
 License
 -------
