@@ -6,9 +6,10 @@ Introduction
 
 Common-Flow is an attempt to gather a sensible selection of the most common
 usage patterns of git into a single and concise specification. It is based on
-the [original variant](http://scottchacon.com/2011/08/31/github-flow.html) of
-[GitHub Flow](https://guides.github.com/introduction/flow/), while taking into
-account how a lot of open source projects most commonly use git.
+the [original variant](https://scottchacon.com/2011/08/31/github-flow/) of
+[GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow),
+while taking into account how a lot of open source projects most commonly use
+git.
 
 In short, Common-Flow is essentially GitHub Flow with the addition of versioned
 releases, optional release branches, and without the requirement to deploy to
@@ -21,7 +22,7 @@ Summary
   broken.
 - Changes (features, bugfixes, etc.) are done on "change branches" created from
   the main branch.
-- Rebase change branches [early and often](https://i.imgur.com/1RS8x2d.png).
+- Rebase change branches early and often.
 - When a change branch is stable and ready, it is merged back in to main.
 - A release is just a git tag who's name is the exact release version string
   (e.g. "2.11.4").
@@ -53,7 +54,8 @@ Git Common-Flow Specification (Common-Flow)
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
+interpreted as described in [RFC
+2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
 1. TL;DR
     1. Do not break the main branch.
