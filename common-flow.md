@@ -25,8 +25,9 @@ Summary
 - Rebase change branches early and often.
 - When a change branch is stable and ready, it is merged back in to main.
 - A release is just a git tag who's name is the exact release version string
-  (e.g. "2.11.4").
-- Release branches can be used to avoid change freezes on main. They are not
+  (e.g. "2.11.4" or "v2.11.4").
+- Release branches can be used when the release process and verification might
+  be lengthy, allowing main to remain open for new changes. They are not
   required, instead they are available if you need them.
 
 Terminology
@@ -114,18 +115,17 @@ interpreted as described in [RFC
        -i" to present a cleaner and easier to follow commit history for your
        reviewers.
     4. A pull request MUST only be merged when the change branch is up-to-date
-       with its source branch, the test suite is passing, and you and others are
-       happy with the change. This is especially important if the merge target
-       is the main branch.
+       with its source branch, the test suite and other CI checks are passing,
+       and you and others are happy with the changes. This is especially
+       important if the merge target is the main branch.
     5. To get feedback, help, or generally just discuss a change branch with
-       others, it is RECOMMENDED you create a pull request and discuss the
+       others, it is RECOMMENDED you create a draft pull request and discuss the
        changes with others there. This leaves a clear and visible history of
        how, when, and why the code looks and behaves the way it does.
 5. Versioning
     1. A "version string" is a typically mostly numeric string that identifies a
        specific version of a project. The version string itself MUST NOT have a
-       "v" prefix, but the version string can be displayed with a "v" prefix to
-       indicate it is a version that is being referred to.
+       "v" prefix, but the version string can be displayed with a "v" prefix.
     2. The source of truth for a project's version MUST be a git tag with a name
        based on the version string. This kind of tag MUST be referred to as a
        "release tag".
@@ -146,9 +146,9 @@ interpreted as described in [RFC
        version string of the release. This kind of tag MUST be referred to as a
        "release tag".
     2. The release tag name can OPTIONALLY be prefixed with "v". For example,
-       the tag name can be either "2.11.4" or "v2.11.4". It is however
-       RECOMMENDED that you do not use a "v" prefix. You MUST NOT use a mixture
-       of "v" prefixed and non-prefixed tags. Pick one form and stick to it.
+       the tag name can be either "2.11.4" or "v2.11.4". Note that this "v"
+       prefix is only for the tag name itself, the version string (as defined in
+       section 5.1) MUST NOT have a "v" prefix.
     3. If the version string is hard-coded into the code-base, you MUST create a
        "version bump" commit which changes the hard-coded version string of the
        project.
@@ -157,27 +157,20 @@ interpreted as described in [RFC
     5. If you are not using a release branch, then the release tag, and if
        relevant the version bump commit, MUST be created directly on the main
        branch.
-    6. The version bump commit SHOULD have a commit message following the
-       Conventional Commits format. For example, "chore(release): 2.11.4" or
-       "chore: bump version to 2.11.4". Alternatively, a simple "Bump version to
-       2.11.4" format is acceptable.
-    7. It is RECOMMENDED that release tags are lightweight tags, but you can
-       OPTIONALLY use annotated tags if you want to include changelog
-       information in the release tag itself.
+    6. If you are using Conventional Commits, the version bump commit MUST also
+       follow the format. For example, "chore(release): 2.11.4". Otherwise, a
+       simple "Bump version to 2.11.4" format is acceptable.
+    7. Release tags SHOULD be lightweight tags unless you need features that
+       annotated tags provide. Annotated tags allow you to include changelog
+       information in the tag itself, GPG sign the tag, or include additional
+       metadata like the tagger's name and email.
     8. If you use annotated release tags, the first line of the annotation
        SHOULD read "Release VERSION". For example for version "2.11.4" the first
        line of the tag annotation SHOULD read "Release 2.11.4". The second line
-       MUST be blank, and the changelog MUST start on the third line.
-    9. When using Conventional Commits, breaking changes MUST be indicated
-       either by appending "!" after the type/scope (e.g. "feat!:" or
-       "feat(api)!:"), or by including a "BREAKING CHANGE:" footer in the commit
-       message. Breaking changes correspond to a MAJOR version bump in Semantic
-       Versioning.
-    10. When using Conventional Commits along with Semantic Versioning, commits
-        of type "fix" correspond to PATCH releases, commits of type "feat"
-        correspond to MINOR releases, and commits with breaking changes
-        correspond to MAJOR releases. This alignment enables automated version
-        determination and changelog generation.
+       MUST be blank, and the changelog SHOULD start on the third line.
+    9. It is OPTIONAL, but RECOMMENDED for high-security projects, to GPG sign
+       release tags. This provides cryptographic verification that the release
+       was created by a trusted party.
 7. Short-Term Release Branches
     1. Any branch that has a name starting with "release-" SHOULD be referred to
        as a "release branch".
@@ -185,14 +178,13 @@ interpreted as described in [RFC
        string, MUST be referred to as a "short-term release branch".
     3. Use of short-term release branches are OPTIONAL, and intended to be used
        to create a specific versioned release.
-    4. A short-term release branch is RECOMMENDED if there is a lengthy
-       prerelease verification process to avoid a code freeze on the main
-       branch.
+    4. A short-term release branch is RECOMMENDED if there is a lengthy release
+       verification process to avoid a code freeze on the main branch.
     5. Short-term release branches MUST have a name of "release-VERSION". For
        example for version "2.11.4" the release branch name MUST be
        "release-2.11.4".
     6. When using a short-term release branch to create a release, the release
-       tag and if used, version bump commit, MUST be placed directly on the
+       tag and version bump commit if used, MUST be placed directly on the
        short-term release branch itself.
     7. Only very minor changes should be performed on a short-term release
        branch directly. Any larger changes SHOULD be done in the main branch,
@@ -213,13 +205,18 @@ interpreted as described in [RFC
        version.
     3. A long-term release branch MUST have a name with a nonspecific version
        number. For example, a long-term release branch for creating new 2.9.x
-       releases MUST be named "release-2.9".
+       releases MUST be named "release-2.9", or "release-2" for all 2.x.x
+       releases when main has moved to 3.x.x. While naming it "release-2.9.x"
+       or "release-2.x" with a literal ".x" suffix is also allowed, it is NOT
+       RECOMMENDED as it can lead to confusion.
     4. Long-term release branches for maintenance releases of older versions
        MUST be created from the relevant release tag. For example, if the main
        branch is on version 2.11.4 and there is a security fix for all 2.9.x
        releases, the latest of which is "2.9.7". Create a new branch called
        "release-2.9" from the "2.9.7" release tag. The security fix release will
-       then end up being version "2.9.8".
+       then end up being version "2.9.8". Similarly, if main is on 3.x.x and you
+       need to maintain the entire 2.x.x line, create a "release-2" branch from
+       the latest 2.x.x release tag.
     5. To create a new release from a long-term release branch, you MUST follow
        the same process as a release from the main branch, except the long-term
        release branch takes the place of the main branch.
@@ -246,27 +243,18 @@ interpreted as described in [RFC
        commit messages SHOULD follow the Commit Guidelines from the official git
        documentation:
        <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
-    2. You SHOULD never blindly commit all changes with "git commit -a". It is
-       RECOMMENDED you use "git add -i" or "git add -p" to add individual
-       changes to the staging area so you are fully aware of what you are
-       committing.
-    3. You SHOULD always use "--force-with-lease" when doing a force push. The
+    2. You SHOULD always use "--force-with-lease" when doing a force push. The
        regular "--force" option is dangerous and destructive. More information:
        <https://www.codestudy.net/blog/git-push-force-with-lease-vs-force/>
-    4. You SHOULD understand and be comfortable with rebasing:
+    3. You SHOULD understand and be comfortable with rebasing:
        <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
-    5. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
+    4. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
        pull" to avoid unnecessary merge commits. You can make this the default
        behavior of "git pull" with "git config --global pull.rebase true".
-    6. It is RECOMMENDED that all branches be merged using "git merge --no-ff".
-       This makes sure the reference to the original branch is kept in the
-       commits, allows one to revert a merge by reverting a single merge commit,
-       and creates a merge commit to mark the integration of the branch with
-       main.
-    7. When using Conventional Commits, it is RECOMMENDED to use tooling to
-       automatically generate changelogs from commit messages. This pairs well
-       with the release process and ensures changelogs are consistent and
-       complete.
+    5. When using Conventional Commits, it is RECOMMENDED to use tooling to
+       automate version bumping and generate changelogs from commit messages.
+       This pairs well with the release process and ensures changelogs are
+       consistent and complete.
 
 FAQ
 ---
