@@ -1,8 +1,6 @@
-Git Common-Flow {{version}}
-===========================
+# Git Common-Flow {{version}}
 
-Introduction
-------------
+## Introduction
 
 Common-Flow is an attempt to gather a sensible selection of the most common
 usage patterns of git into a single and concise specification. It is based on
@@ -15,8 +13,7 @@ In short, Common-Flow is essentially GitHub Flow with the addition of versioned
 releases, optional release branches, and without the requirement to deploy to
 production all the time.
 
-Summary
--------
+## Summary
 
 - The "main" branch is the mainline branch with latest changes, and must not be
   broken.
@@ -30,8 +27,7 @@ Summary
   be lengthy, allowing main to remain open for new changes. They are not
   required, instead they are available if you need them.
 
-Terminology
------------
+## Terminology
 
 - **Main Branch** - Must be named "main", must always have passing tests, and is
   not guaranteed to always work in production environments.
@@ -50,8 +46,7 @@ Terminology
 - **Release Branches** - Used both for short-term preparations of a release, and
   for long-term maintenance of older versions.
 
-Git Common-Flow Specification (Common-Flow)
--------------------------------------------
+## Git Common-Flow Specification (Common-Flow)
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -256,8 +251,7 @@ interpreted as described in [RFC
        This pairs well with the release process and ensures changelogs are
        consistent and complete.
 
-FAQ
----
+## FAQ
 
 ### Why use Common-Flow instead of Git Flow, and how does it differ?
 
@@ -343,8 +337,7 @@ complicated task and you're short on time, a short-term release branch gives you
 an instant fix to the situation at hand. You can then resolve the issues with
 the main branch later.
 
-About
------
+## About
 
 The Git Common-Flow specification is authored by [Jim
 Myhrberg](https://jimeh.me/).
@@ -352,7 +345,6 @@ Myhrberg](https://jimeh.me/).
 If you'd like to leave feedback, please [open an issue on
 GitHub](https://github.com/jimeh/common-flow/issues).
 
-License
--------
+## License
 
 [Creative Commons - CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
