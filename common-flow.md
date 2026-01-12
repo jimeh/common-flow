@@ -337,6 +337,27 @@ complicated task and you're short on time, a short-term release branch gives you
 an instant fix to the situation at hand. You can then resolve the issues with
 the main branch later.
 
+### How do I handle monorepos?
+
+Common-Flow works well with monorepos. The key considerations are:
+
+- Use a single main branch for the entire monorepo. This keeps things simple and
+  ensures all packages/projects are always in a consistent state.
+- For versioning, you have two main options:
+  - **Unified versioning**: All packages share the same version number. Simple
+    to manage, but may result in version bumps for packages that haven't
+    changed.
+  - **Independent versioning**: Each package has its own version. Use tags with
+    a package prefix, e.g., "package-a-2.1.0" or "package-a-v2.1.0". This allows
+    packages to evolve at their own pace.
+- Change branches can span multiple packages. Describe the scope in the branch
+  name if helpful, e.g., "update-auth-across-services".
+- For releases, if using independent versioning, you can create release branches
+  per package when needed, e.g., "release-package-a-2.1".
+
+The core workflow remains the same: don't break main, use change branches, and
+tag releases.
+
 ## About
 
 The Git Common-Flow specification is authored by [Jim
