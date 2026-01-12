@@ -61,7 +61,7 @@ interpreted as described in [RFC
        branch".
     2. The main branch MUST always be in a non-broken state with its test suite
        passing.
-    3. The main branch IS NOT guaranteed to always work in production
+    3. The main branch is not guaranteed to always work in production
        environments. Despite test suites passing it may at times contain
        unfinished work. Only releases may be considered safe for production use.
     4. The main branch SHOULD always be in a "as near as possibly ready for
@@ -92,12 +92,12 @@ interpreted as described in [RFC
        "--force-with-lease" git push option when doing so instead of the regular
        "--force".
     9. If there is a truly valid technical reason to not use rebase when
-       updating change branches, then you can update change branches via merge
+       updating change branches, then you MAY update change branches via merge
        instead of rebase. The decision to use merge MUST only be taken after all
        possible options to use rebase have been tried and failed. People not
        understanding how to use rebase is NOT a valid reason to use merge. If
        you do decide to use merge instead of rebase, you MUST NOT use a mixture
-       of both methods, pick one and stick to it.
+       of both methods.
 4. Pull Requests
     1. To merge a change branch into its merge target, you MUST open a "pull
        request" (or equivalent).
@@ -208,7 +208,7 @@ interpreted as described in [RFC
        The release tag MUST be placed on the version bump commit, or on the
        merge commit when using a release pull request to merge the release
        branch.
-    7. Only very minor changes should be performed on a short-term release
+    7. Only very minor changes SHOULD be performed on a short-term release
        branch directly. Any larger changes SHOULD be done in the main branch,
        and SHOULD be pulled into the release branch by rebasing it on top of the
        main branch the same way a change branch pulls in updates from its source
@@ -228,9 +228,7 @@ interpreted as described in [RFC
     3. A long-term release branch MUST have a name with a nonspecific version
        number. For example, a long-term release branch for creating new 2.9.x
        releases MUST be named "release-2.9", or "release-2" for all 2.x.x
-       releases when main has moved to 3.x.x. While naming it "release-2.9.x"
-       or "release-2.x" with a literal ".x" suffix is also allowed, it is NOT
-       RECOMMENDED as it can lead to confusion.
+       releases when main has moved to 3.x.x.
     4. Long-term release branches for maintenance releases of older versions
        MUST be created from the relevant release tag. For example, if the main
        branch is on version 2.11.4 and there is a security fix for all 2.9.x
@@ -242,7 +240,7 @@ interpreted as described in [RFC
     5. To create a new release from a long-term release branch, you MUST follow
        the same process as a release from the main branch, except the long-term
        release branch takes the place of the main branch.
-    6. A long-term release branch should be treated with the same respect as the
+    6. A long-term release branch SHOULD be treated with the same respect as the
        main branch. It is effectively the main branch for the release series in
        question. Meaning it MUST always be in a non-broken state, MUST NOT be
        force pushed to, etc.
