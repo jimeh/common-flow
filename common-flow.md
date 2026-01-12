@@ -117,7 +117,27 @@ interpreted as described in [RFC
        others, it is RECOMMENDED you create a draft pull request and discuss the
        changes with others there. This leaves a clear and visible history of
        how, when, and why the code looks and behaves the way it does.
-5. Versioning
+5. Git Best Practices
+    1. It is RECOMMENDED that all commit messages follow the Conventional
+       Commits specification (<https://www.conventionalcommits.org/>). This
+       provides a structured format that integrates well with Semantic
+       Versioning, and enables automated changelog generation. At minimum,
+       commit messages SHOULD follow the Commit Guidelines from the official git
+       documentation:
+       <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
+    2. You SHOULD always use "--force-with-lease" when doing a force push. The
+       regular "--force" option is dangerous and destructive. More information:
+       <https://www.codestudy.net/blog/git-push-force-with-lease-vs-force/>
+    3. You SHOULD understand and be comfortable with rebasing:
+       <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
+    4. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
+       pull" to avoid unnecessary merge commits. You can make this the default
+       behavior of "git pull" with "git config --global pull.rebase true".
+    5. When using Conventional Commits, it is RECOMMENDED to use tooling to
+       automate version bumping and generate changelogs from commit messages.
+       This pairs well with the release process and ensures changelogs are
+       consistent and complete.
+6. Versioning
     1. A "version string" is a typically mostly numeric string that identifies a
        specific version of a project. The version string itself MUST NOT have a
        "v" prefix, but the version string can be displayed with a "v" prefix.
@@ -136,14 +156,14 @@ interpreted as described in [RFC
        "v" prefix. For example, "v2.11.4" is bad, and "2.11.4" is good.
     6. It is OPTIONAL, but RECOMMENDED that the version string follows Semantic
        Versioning (<http://semver.org/>).
-6. Releases
+7. Releases
     1. To create a new release, you MUST create a git tag named as the exact
        version string of the release. This kind of tag MUST be referred to as a
        "release tag".
     2. The release tag name can OPTIONALLY be prefixed with "v". For example,
        the tag name can be either "2.11.4" or "v2.11.4". Note that this "v"
        prefix is only for the tag name itself, the version string (as defined in
-       section 5.1) MUST NOT have a "v" prefix.
+       section 6.1) MUST NOT have a "v" prefix.
     3. If the version string is hard-coded into the code-base, you MUST create a
        "version bump" commit which changes the hard-coded version string of the
        project.
@@ -166,7 +186,7 @@ interpreted as described in [RFC
     9. It is OPTIONAL, but RECOMMENDED for high-security projects, to GPG sign
        release tags. This provides cryptographic verification that the release
        was created by a trusted party.
-7. Short-Term Release Branches
+8. Short-Term Release Branches
     1. Any branch that has a name starting with "release-" SHOULD be referred to
        as a "release branch".
     2. Any release branch which has a name ending with a specific version
@@ -189,7 +209,7 @@ interpreted as described in [RFC
     8. After a release tag has been created, the release branch MUST be merged
        back into its source branch and then deleted. Typically the source branch
        will be the main branch.
-8. Long-term Release Branches
+9. Long-Term Release Branches
     1. Any release branch which has a name ending with a nonspecific version
        string, MUST be referred to as a "long-term release branch". For example,
        "release-2.11" is a long-term release branch, while "release-2.11.4" is a
@@ -219,7 +239,7 @@ interpreted as described in [RFC
        main branch. It is effectively the main branch for the release series in
        question. Meaning it MUST always be in a non-broken state, MUST NOT be
        force pushed to, etc.
-9. Bug Fixes & Rollback
+10. Bug Fixes & Rollback
     1. You MUST NOT under any circumstances force push to the main branch or to
        long-term release branches.
     2. If a change branch which has been merged into the main branch is found to
@@ -230,26 +250,6 @@ interpreted as described in [RFC
        reason the merge must be undone, you MUST undo the merge by reverting the
        merge commit itself. Effectively creating a new commit that reverses all
        the relevant changes.
-10. Git Best Practices
-    1. It is RECOMMENDED that all commit messages follow the Conventional
-       Commits specification (<https://www.conventionalcommits.org/>). This
-       provides a structured format that integrates well with Semantic
-       Versioning, and enables automated changelog generation. At minimum,
-       commit messages SHOULD follow the Commit Guidelines from the official git
-       documentation:
-       <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
-    2. You SHOULD always use "--force-with-lease" when doing a force push. The
-       regular "--force" option is dangerous and destructive. More information:
-       <https://www.codestudy.net/blog/git-push-force-with-lease-vs-force/>
-    3. You SHOULD understand and be comfortable with rebasing:
-       <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
-    4. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
-       pull" to avoid unnecessary merge commits. You can make this the default
-       behavior of "git pull" with "git config --global pull.rebase true".
-    5. When using Conventional Commits, it is RECOMMENDED to use tooling to
-       automate version bumping and generate changelogs from commit messages.
-       This pairs well with the release process and ensures changelogs are
-       consistent and complete.
 
 ## FAQ
 
