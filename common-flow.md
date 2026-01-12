@@ -168,22 +168,27 @@ interpreted as described in [RFC
        "version bump" commit which changes the hard-coded version string of the
        project.
     4. When using version bump commits, the release tag MUST be placed on the
-       version bump commit.
-    5. If you are not using a release branch, then the release tag, and if
+       version bump commit, unless using a release pull request.
+    5. It is OPTIONAL to use a "release pull request" to propose a release. A
+       release pull request contains the version bump commit and any
+       release-related changes (changelog updates, etc.). When using release
+       pull requests, the release tag SHOULD be placed on the resulting merge
+       commit.
+    6. If you are not using a release branch, then the release tag, and if
        relevant the version bump commit, MUST be created directly on the main
        branch.
-    6. If you are using Conventional Commits, the version bump commit MUST also
+    7. If you are using Conventional Commits, the version bump commit MUST also
        follow the format. For example, "chore(release): 2.11.4". Otherwise, a
        simple "Bump version to 2.11.4" format is acceptable.
-    7. Release tags SHOULD be lightweight tags unless you need features that
+    8. Release tags SHOULD be lightweight tags unless you need features that
        annotated tags provide. Annotated tags allow you to include changelog
        information in the tag itself, GPG sign the tag, or include additional
        metadata like the tagger's name and email.
-    8. If you use annotated release tags, the first line of the annotation
+    9. If you use annotated release tags, the first line of the annotation
        SHOULD read "Release VERSION". For example for version "2.11.4" the first
        line of the tag annotation SHOULD read "Release 2.11.4". The second line
        MUST be blank, and the changelog SHOULD start on the third line.
-    9. It is OPTIONAL, but RECOMMENDED for high-security projects, to GPG sign
+   10. It is OPTIONAL, but RECOMMENDED for high-security projects, to GPG sign
        release tags. This provides cryptographic verification that the release
        was created by a trusted party.
 8. Short-Term Release Branches
@@ -198,9 +203,11 @@ interpreted as described in [RFC
     5. Short-term release branches MUST have a name of "release-VERSION". For
        example for version "2.11.4" the release branch name MUST be
        "release-2.11.4".
-    6. When using a short-term release branch to create a release, the release
-       tag and version bump commit if used, MUST be placed directly on the
-       short-term release branch itself.
+    6. When using a short-term release branch to create a release, the version
+       bump commit if used, MUST be created on the short-term release branch.
+       The release tag MUST be placed on the version bump commit, or on the
+       merge commit when using a release pull request to merge the release
+       branch.
     7. Only very minor changes should be performed on a short-term release
        branch directly. Any larger changes SHOULD be done in the main branch,
        and SHOULD be pulled into the release branch by rebasing it on top of the
