@@ -1,8 +1,6 @@
-Git Common-Flow {{version}}
-===========================
+# Git Common-Flow {{version}}
 
-Introduction
-------------
+## Introduction
 
 Common-Flow is an attempt to gather a sensible selection of the most common
 usage patterns of git into a single and concise specification. It is based on
@@ -15,8 +13,7 @@ In short, Common-Flow is essentially GitHub Flow with the addition of versioned
 releases, optional release branches, and without the requirement to deploy to
 production all the time.
 
-Summary
--------
+## Summary
 
 - The "main" branch is the mainline branch with latest changes, and must not be
   broken.
@@ -25,12 +22,12 @@ Summary
 - Rebase change branches early and often.
 - When a change branch is stable and ready, it is merged back in to main.
 - A release is just a git tag who's name is the exact release version string
-  (e.g. "2.11.4").
-- Release branches can be used to avoid change freezes on main. They are not
+  (e.g. "2.11.4" or "v2.11.4").
+- Release branches can be used when the release process and verification might
+  be lengthy, allowing main to remain open for new changes. They are not
   required, instead they are available if you need them.
 
-Terminology
------------
+## Terminology
 
 - **Main Branch** - Must be named "main", must always have passing tests, and is
   not guaranteed to always work in production environments.
@@ -49,8 +46,7 @@ Terminology
 - **Release Branches** - Used both for short-term preparations of a release, and
   for long-term maintenance of older versions.
 
-Git Common-Flow Specification (Common-Flow)
--------------------------------------------
+## Git Common-Flow Specification (Common-Flow)
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
@@ -65,7 +61,7 @@ interpreted as described in [RFC
        branch".
     2. The main branch MUST always be in a non-broken state with its test suite
        passing.
-    3. The main branch IS NOT guaranteed to always work in production
+    3. The main branch is not guaranteed to always work in production
        environments. Despite test suites passing it may at times contain
        unfinished work. Only releases may be considered safe for production use.
     4. The main branch SHOULD always be in a "as near as possibly ready for
@@ -96,12 +92,12 @@ interpreted as described in [RFC
        "--force-with-lease" git push option when doing so instead of the regular
        "--force".
     9. If there is a truly valid technical reason to not use rebase when
-       updating change branches, then you can update change branches via merge
+       updating change branches, then you MAY update change branches via merge
        instead of rebase. The decision to use merge MUST only be taken after all
        possible options to use rebase have been tried and failed. People not
        understanding how to use rebase is NOT a valid reason to use merge. If
        you do decide to use merge instead of rebase, you MUST NOT use a mixture
-       of both methods, pick one and stick to it.
+       of both methods.
 4. Pull Requests
     1. To merge a change branch into its merge target, you MUST open a "pull
        request" (or equivalent).
@@ -114,18 +110,37 @@ interpreted as described in [RFC
        -i" to present a cleaner and easier to follow commit history for your
        reviewers.
     4. A pull request MUST only be merged when the change branch is up-to-date
-       with its source branch, the test suite is passing, and you and others are
-       happy with the change. This is especially important if the merge target
-       is the main branch.
+       with its source branch, the test suite and other CI checks are passing,
+       and you and others are happy with the changes. This is especially
+       important if the merge target is the main branch.
     5. To get feedback, help, or generally just discuss a change branch with
-       others, it is RECOMMENDED you create a pull request and discuss the
+       others, it is RECOMMENDED you create a draft pull request and discuss the
        changes with others there. This leaves a clear and visible history of
        how, when, and why the code looks and behaves the way it does.
-5. Versioning
+5. Git Best Practices
+    1. It is RECOMMENDED that all commit messages follow the Conventional
+       Commits specification (<https://www.conventionalcommits.org/>). This
+       provides a structured format that integrates well with Semantic
+       Versioning, and enables automated changelog generation. At minimum,
+       commit messages SHOULD follow the Commit Guidelines from the official git
+       documentation:
+       <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
+    2. You SHOULD always use "--force-with-lease" when doing a force push. The
+       regular "--force" option is dangerous and destructive. More information:
+       <https://www.codestudy.net/blog/git-push-force-with-lease-vs-force/>
+    3. You SHOULD understand and be comfortable with rebasing:
+       <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
+    4. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
+       pull" to avoid unnecessary merge commits. You can make this the default
+       behavior of "git pull" with "git config --global pull.rebase true".
+    5. When using Conventional Commits, it is RECOMMENDED to use tooling to
+       automate version bumping and generate changelogs from commit messages.
+       This pairs well with the release process and ensures changelogs are
+       consistent and complete.
+6. Versioning
     1. A "version string" is a typically mostly numeric string that identifies a
        specific version of a project. The version string itself MUST NOT have a
-       "v" prefix, but the version string can be displayed with a "v" prefix to
-       indicate it is a version that is being referred to.
+       "v" prefix, but the version string can be displayed with a "v" prefix.
     2. The source of truth for a project's version MUST be a git tag with a name
        based on the version string. This kind of tag MUST be referred to as a
        "release tag".
@@ -141,60 +156,59 @@ interpreted as described in [RFC
        "v" prefix. For example, "v2.11.4" is bad, and "2.11.4" is good.
     6. It is OPTIONAL, but RECOMMENDED that the version string follows Semantic
        Versioning (<http://semver.org/>).
-6. Releases
+7. Releases
     1. To create a new release, you MUST create a git tag named as the exact
        version string of the release. This kind of tag MUST be referred to as a
        "release tag".
     2. The release tag name can OPTIONALLY be prefixed with "v". For example,
-       the tag name can be either "2.11.4" or "v2.11.4". It is however
-       RECOMMENDED that you do not use a "v" prefix. You MUST NOT use a mixture
-       of "v" prefixed and non-prefixed tags. Pick one form and stick to it.
+       the tag name can be either "2.11.4" or "v2.11.4". Note that this "v"
+       prefix is only for the tag name itself, the version string (as defined in
+       section 6.1) MUST NOT have a "v" prefix.
     3. If the version string is hard-coded into the code-base, you MUST create a
        "version bump" commit which changes the hard-coded version string of the
        project.
     4. When using version bump commits, the release tag MUST be placed on the
-       version bump commit.
-    5. If you are not using a release branch, then the release tag, and if
+       version bump commit, unless using a release pull request.
+    5. It is OPTIONAL to use a "release pull request" to propose a release. A
+       release pull request contains the version bump commit and any
+       release-related changes (changelog updates, etc.). When using release
+       pull requests, the release tag SHOULD be placed on the resulting merge
+       commit.
+    6. If you are not using a release branch, then the release tag, and if
        relevant the version bump commit, MUST be created directly on the main
        branch.
-    6. The version bump commit SHOULD have a commit message following the
-       Conventional Commits format. For example, "chore(release): 2.11.4" or
-       "chore: bump version to 2.11.4". Alternatively, a simple "Bump version to
-       2.11.4" format is acceptable.
-    7. It is RECOMMENDED that release tags are lightweight tags, but you can
-       OPTIONALLY use annotated tags if you want to include changelog
-       information in the release tag itself.
-    8. If you use annotated release tags, the first line of the annotation
+    7. If you are using Conventional Commits, the version bump commit MUST also
+       follow the format. For example, "chore(release): 2.11.4". Otherwise, a
+       simple "Bump version to 2.11.4" format is acceptable.
+    8. Release tags SHOULD be lightweight tags unless you need features that
+       annotated tags provide. Annotated tags allow you to include changelog
+       information in the tag itself, GPG sign the tag, or include additional
+       metadata like the tagger's name and email.
+    9. If you use annotated release tags, the first line of the annotation
        SHOULD read "Release VERSION". For example for version "2.11.4" the first
        line of the tag annotation SHOULD read "Release 2.11.4". The second line
-       MUST be blank, and the changelog MUST start on the third line.
-    9. When using Conventional Commits, breaking changes MUST be indicated
-       either by appending "!" after the type/scope (e.g. "feat!:" or
-       "feat(api)!:"), or by including a "BREAKING CHANGE:" footer in the commit
-       message. Breaking changes correspond to a MAJOR version bump in Semantic
-       Versioning.
-    10. When using Conventional Commits along with Semantic Versioning, commits
-        of type "fix" correspond to PATCH releases, commits of type "feat"
-        correspond to MINOR releases, and commits with breaking changes
-        correspond to MAJOR releases. This alignment enables automated version
-        determination and changelog generation.
-7. Short-Term Release Branches
+       MUST be blank, and the changelog SHOULD start on the third line.
+   10. It is OPTIONAL, but RECOMMENDED for high-security projects, to GPG sign
+       release tags. This provides cryptographic verification that the release
+       was created by a trusted party.
+8. Short-Term Release Branches
     1. Any branch that has a name starting with "release-" SHOULD be referred to
        as a "release branch".
     2. Any release branch which has a name ending with a specific version
        string, MUST be referred to as a "short-term release branch".
     3. Use of short-term release branches are OPTIONAL, and intended to be used
        to create a specific versioned release.
-    4. A short-term release branch is RECOMMENDED if there is a lengthy
-       prerelease verification process to avoid a code freeze on the main
-       branch.
+    4. A short-term release branch is RECOMMENDED if there is a lengthy release
+       verification process to avoid a code freeze on the main branch.
     5. Short-term release branches MUST have a name of "release-VERSION". For
        example for version "2.11.4" the release branch name MUST be
        "release-2.11.4".
-    6. When using a short-term release branch to create a release, the release
-       tag and if used, version bump commit, MUST be placed directly on the
-       short-term release branch itself.
-    7. Only very minor changes should be performed on a short-term release
+    6. When using a short-term release branch to create a release, the version
+       bump commit if used, MUST be created on the short-term release branch.
+       The release tag MUST be placed on the version bump commit, or on the
+       merge commit when using a release pull request to merge the release
+       branch.
+    7. Only very minor changes SHOULD be performed on a short-term release
        branch directly. Any larger changes SHOULD be done in the main branch,
        and SHOULD be pulled into the release branch by rebasing it on top of the
        main branch the same way a change branch pulls in updates from its source
@@ -202,7 +216,7 @@ interpreted as described in [RFC
     8. After a release tag has been created, the release branch MUST be merged
        back into its source branch and then deleted. Typically the source branch
        will be the main branch.
-8. Long-term Release Branches
+9. Long-Term Release Branches
     1. Any release branch which has a name ending with a nonspecific version
        string, MUST be referred to as a "long-term release branch". For example,
        "release-2.11" is a long-term release branch, while "release-2.11.4" is a
@@ -213,21 +227,24 @@ interpreted as described in [RFC
        version.
     3. A long-term release branch MUST have a name with a nonspecific version
        number. For example, a long-term release branch for creating new 2.9.x
-       releases MUST be named "release-2.9".
+       releases MUST be named "release-2.9", or "release-2" for all 2.x.x
+       releases when main has moved to 3.x.x.
     4. Long-term release branches for maintenance releases of older versions
        MUST be created from the relevant release tag. For example, if the main
        branch is on version 2.11.4 and there is a security fix for all 2.9.x
        releases, the latest of which is "2.9.7". Create a new branch called
        "release-2.9" from the "2.9.7" release tag. The security fix release will
-       then end up being version "2.9.8".
+       then end up being version "2.9.8". Similarly, if main is on 3.x.x and you
+       need to maintain the entire 2.x.x line, create a "release-2" branch from
+       the latest 2.x.x release tag.
     5. To create a new release from a long-term release branch, you MUST follow
        the same process as a release from the main branch, except the long-term
        release branch takes the place of the main branch.
-    6. A long-term release branch should be treated with the same respect as the
+    6. A long-term release branch SHOULD be treated with the same respect as the
        main branch. It is effectively the main branch for the release series in
        question. Meaning it MUST always be in a non-broken state, MUST NOT be
        force pushed to, etc.
-9. Bug Fixes & Rollback
+10. Bug Fixes & Rollback
     1. You MUST NOT under any circumstances force push to the main branch or to
        long-term release branches.
     2. If a change branch which has been merged into the main branch is found to
@@ -238,38 +255,8 @@ interpreted as described in [RFC
        reason the merge must be undone, you MUST undo the merge by reverting the
        merge commit itself. Effectively creating a new commit that reverses all
        the relevant changes.
-10. Git Best Practices
-    1. It is RECOMMENDED that all commit messages follow the Conventional
-       Commits specification (<https://www.conventionalcommits.org/>). This
-       provides a structured format that integrates well with Semantic
-       Versioning, and enables automated changelog generation. At minimum,
-       commit messages SHOULD follow the Commit Guidelines from the official git
-       documentation:
-       <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines>
-    2. You SHOULD never blindly commit all changes with "git commit -a". It is
-       RECOMMENDED you use "git add -i" or "git add -p" to add individual
-       changes to the staging area so you are fully aware of what you are
-       committing.
-    3. You SHOULD always use "--force-with-lease" when doing a force push. The
-       regular "--force" option is dangerous and destructive. More information:
-       <https://www.codestudy.net/blog/git-push-force-with-lease-vs-force/>
-    4. You SHOULD understand and be comfortable with rebasing:
-       <https://git-scm.com/book/en/v2/Git-Branching-Rebasing>
-    5. It is RECOMMENDED that you always do "git pull --rebase" instead of "git
-       pull" to avoid unnecessary merge commits. You can make this the default
-       behavior of "git pull" with "git config --global pull.rebase true".
-    6. It is RECOMMENDED that all branches be merged using "git merge --no-ff".
-       This makes sure the reference to the original branch is kept in the
-       commits, allows one to revert a merge by reverting a single merge commit,
-       and creates a merge commit to mark the integration of the branch with
-       main.
-    7. When using Conventional Commits, it is RECOMMENDED to use tooling to
-       automatically generate changelogs from commit messages. This pairs well
-       with the release process and ensures changelogs are consistent and
-       complete.
 
-FAQ
----
+## FAQ
 
 ### Why use Common-Flow instead of Git Flow, and how does it differ?
 
@@ -355,8 +342,28 @@ complicated task and you're short on time, a short-term release branch gives you
 an instant fix to the situation at hand. You can then resolve the issues with
 the main branch later.
 
-About
------
+### How do I handle monorepos?
+
+Common-Flow works well with monorepos. The key considerations are:
+
+- Use a single main branch for the entire monorepo. This keeps things simple and
+  ensures all packages/projects are always in a consistent state.
+- For versioning, you have two main options:
+  - **Unified versioning**: All packages share the same version number. Simple
+    to manage, but may result in version bumps for packages that haven't
+    changed.
+  - **Independent versioning**: Each package has its own version. Use tags with
+    a package prefix, e.g., "package-a-2.1.0" or "package-a-v2.1.0". This allows
+    packages to evolve at their own pace.
+- Change branches can span multiple packages. Describe the scope in the branch
+  name if helpful, e.g., "update-auth-across-services".
+- For releases, if using independent versioning, you can create release branches
+  per package when needed, e.g., "release-package-a-2.1".
+
+The core workflow remains the same: don't break main, use change branches, and
+tag releases.
+
+## About
 
 The Git Common-Flow specification is authored by [Jim
 Myhrberg](https://jimeh.me/).
@@ -364,7 +371,6 @@ Myhrberg](https://jimeh.me/).
 If you'd like to leave feedback, please [open an issue on
 GitHub](https://github.com/jimeh/common-flow/issues).
 
-License
--------
+## License
 
 [Creative Commons - CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
